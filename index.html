@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Clear Your Money Blocks · The Art of Receiving</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08050F;--bgm:#0F0818;--dark:#0A041A;--darkm:#140828;
+  --lav:#CFAEDC;--pink:#FA9CE0;--mag:#E14DA8;
+  --txt:#F0E8F8;--txts:#D4C0E8;--txtm:#A888C8;--txtf:#7A5898;--txtq:#5A3878;
+  --bdr:rgba(207,174,220,0.13);--bdrb:rgba(207,174,220,0.24);
+  --shd:rgba(225,77,168,0.08);--shh:rgba(225,77,168,0.2);
+  --card:rgba(20,8,40,0.88);--pg:linear-gradient(135deg,#E14DA8,#FA9CE0);
+  --lg:linear-gradient(135deg,#CFAEDC,#FA9CE0);
+}
+html,body{background:var(--bg);color:var(--txts);font-family:'Montserrat',sans-serif;min-height:100vh;overflow-x:hidden}
+canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:rgba(207,174,220,0.25);border-radius:2px}
+
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;min-height:260px;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;padding:56px 24px 44px}
+.hero-inner{position:relative;z-index:2}
+.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--mag);text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,42px);font-weight:700;color:var(--txt);line-height:1.12;margin-bottom:10px}
+.hero-title em{color:var(--pink);font-style:italic;font-weight:400}
+.hero-sub{font-size:12px;color:var(--txtm);line-height:1.7;max-width:380px;margin:0 auto 18px}
+.hero-accent{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--lav);letter-spacing:1.5px}
+
+/* ── PROGRESS BAR ── */
+.prog-bar{background:var(--dark);padding:10px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.prog-label{font-size:8px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--txtq);white-space:nowrap}
+.prog-track{flex:1;height:3px;background:rgba(207,174,220,0.1);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--pg);border-radius:2px;transition:width .4s ease}
+.prog-count{font-size:9px;font-weight:700;color:var(--mag);white-space:nowrap}
+
+/* ── NAV ── */
+.nav{position:sticky;top:41px;z-index:99;background:rgba(8,5,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.nav-btn{font-size:8px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;padding:14px 14px 12px;border:none;background:none;color:var(--txtq);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:color .2s;border-bottom:2px solid transparent}
+.nav-btn.active{color:var(--mag);border-bottom-color:var(--mag)}
+
+/* ── LAYOUT ── */
+.content{max-width:680px;margin:0 auto;padding:32px 20px 80px}
+.section{display:none}
+.section.active{display:block;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CARDS ── */
+.card{background:var(--card);border-radius:14px;border:1px solid var(--bdr);box-shadow:0 2px 18px var(--shd);backdrop-filter:blur(12px);padding:22px 20px;margin-bottom:14px}
+.card-hv{transition:transform .2s,box-shadow .2s}
+.card-hv:hover{transform:translateY(-2px);box-shadow:0 8px 28px var(--shh)}
+
+/* ── EYEBROW / HEADLINE ── */
+.eyebrow{font-size:9px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--mag);margin-bottom:8px}
+.eyebrow-lav{color:var(--lav)}
+.eyebrow-pink{color:var(--pink)}
+.section-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:rgba(207,174,220,0.09);line-height:1;margin-bottom:-8px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,32px);font-weight:700;color:var(--txt);line-height:1.2;margin-bottom:6px}
+.section-title em{color:var(--pink);font-style:italic}
+.section-lead{font-size:13px;color:var(--txts);line-height:1.75;margin-bottom:20px}
+
+/* ── TEXTAREA / INPUT ── */
+textarea,input[type=text]{width:100%;background:rgba(207,174,220,0.05);border:1px solid var(--bdr);border-radius:10px;color:var(--txt);font-family:'Montserrat',sans-serif;font-size:13px;padding:14px 16px;resize:vertical;outline:none;transition:border-color .2s;line-height:1.65}
+textarea:focus,input[type=text]:focus{border-color:var(--lav)}
+textarea::placeholder,input::placeholder{color:var(--txtq)}
+
+/* ── BODY CHECK ROW ── */
+.body-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.body-zone{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;background:rgba(207,174,220,0.04);border:1px solid var(--bdr);cursor:pointer;transition:all .2s}
+.body-zone.felt{border-color:var(--lav);background:rgba(207,174,220,0.1);box-shadow:0 0 14px rgba(207,174,220,0.15)}
+.body-zone-dot{width:10px;height:10px;border-radius:50%;background:var(--bdr);border:1px solid var(--lav);transition:all .2s;flex-shrink:0}
+.body-zone.felt .body-zone-dot{background:var(--lav);border-color:var(--lav)}
+.body-zone-label{font-size:13px;color:var(--txts)}
+
+/* ── MONEY BLOCKS CHECKBOXES ── */
+.block-item{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:10px;border:1px solid var(--bdr);background:rgba(207,174,220,0.03);margin-bottom:8px;cursor:pointer;transition:all .2s}
+.block-item.checked{border-color:var(--pink);background:rgba(250,156,224,0.08);box-shadow:0 0 14px rgba(250,156,224,0.12)}
+.block-check{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.block-item.checked .block-check{background:var(--pg);border-color:transparent}
+.block-check-mark{color:#fff;font-size:11px;font-weight:700;opacity:0;transition:opacity .15s}
+.block-item.checked .block-check-mark{opacity:1}
+.block-text{font-size:13px;color:var(--txts)}
+
+/* ── RELEASE STATEMENT ── */
+.release-box{background:linear-gradient(135deg,rgba(225,77,168,0.08),rgba(207,174,220,0.06));border:1px solid rgba(225,77,168,0.25);border-radius:14px;padding:22px 20px;margin-top:16px}
+.release-line{font-size:13.5px;color:var(--txt);line-height:1.9;font-style:italic;padding-left:14px;border-left:2px solid var(--mag)}
+.burn-btn{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mag);background:rgba(225,77,168,0.1);border:1.5px solid rgba(225,77,168,0.4);border-radius:50px;padding:10px 22px;cursor:pointer;transition:all .2s}
+.burn-btn:hover{background:rgba(225,77,168,0.2);transform:translateY(-1px)}
+.burn-flash{animation:burnFlash .6s ease}
+@keyframes burnFlash{0%,100%{opacity:1}50%{opacity:0;transform:scale(1.05)}}
+
+/* ── AFFIRMATIONS ── */
+.aff-set{margin-bottom:20px}
+.aff-set-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.aff-item{padding:13px 16px;border-radius:10px;border:1px solid var(--bdr);background:rgba(207,174,220,0.03);margin-bottom:8px;cursor:pointer;transition:all .2s;font-size:13.5px;color:var(--txts);line-height:1.5;display:flex;align-items:center;gap:12px}
+.aff-item:hover{border-color:var(--lav);background:rgba(207,174,220,0.07)}
+.aff-item.picked{border-color:var(--mag);background:rgba(225,77,168,0.1);color:var(--txt);box-shadow:0 0 16px rgba(225,77,168,0.15)}
+.aff-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--lav);flex-shrink:0;transition:all .2s}
+.aff-item.picked .aff-dot{background:var(--mag);border-color:var(--mag)}
+.pick-counter{font-size:11px;font-weight:600;color:var(--lav);margin-bottom:14px}
+.pick-counter span{color:var(--mag);font-weight:700}
+.today-card{background:linear-gradient(135deg,rgba(225,77,168,0.1),rgba(207,174,220,0.06));border:1px solid rgba(225,77,168,0.3);border-radius:12px;padding:18px;margin-top:6px;min-height:64px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--txt);line-height:1.75;text-align:center}
+
+/* ── RITUAL CALENDAR ── */
+.cal-month-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lav);margin:22px 0 10px;padding-left:4px}
+.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
+.cal-event{padding:14px 16px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);transition:all .2s;cursor:default}
+.cal-event:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shh)}
+.cal-event-date{font-size:10px;font-weight:700;color:var(--mag);letter-spacing:.8px;margin-bottom:4px}
+.cal-event-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
+.cal-event-desc{font-size:11px;color:var(--txtm);line-height:1.5}
+.cal-event.moon-new{border-left:3px solid #7B68EE}
+.cal-event.moon-full{border-left:3px solid #CFAEDC}
+.cal-event.eclipse{border-left:3px solid #FA9CE0;background:rgba(250,156,224,0.06)}
+.cal-event.portal{border-left:3px solid #E14DA8;background:rgba(225,77,168,0.07)}
+.cal-event.power{border-left:3px solid #FFD700;background:rgba(255,215,0,0.04)}
+.cal-event.solstice{border-left:3px solid #8effd5;background:rgba(142,255,213,0.04)}
+.cal-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--txtm)}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── VIDEO SLOT ── */
+.video-slot{background:rgba(207,174,220,0.04);border:1px dashed rgba(207,174,220,0.25);border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:14px}
+.video-icon{font-size:36px;margin-bottom:12px}
+.video-slot-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--lav);margin-bottom:8px}
+.video-slot-desc{font-size:12px;color:var(--txtm);line-height:1.65}
+.video-url-input{margin-top:14px}
+.video-embed{width:100%;aspect-ratio:16/9;border-radius:12px;border:none;display:none;margin-bottom:14px}
+.video-load-btn{font-size:11px;font-weight:700;color:#fff;background:var(--pg);border:none;border-radius:50px;padding:9px 22px;cursor:pointer;margin-top:10px;transition:all .2s}
+.video-load-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+
+/* ── EMBODIMENT ── */
+.breath-box{background:linear-gradient(135deg,rgba(207,174,220,0.07),rgba(225,77,168,0.05));border:1px solid rgba(207,174,220,0.2);border-radius:14px;padding:24px;margin:14px 0;text-align:center}
+.breath-prompt{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--txt);line-height:1.6;margin-bottom:16px}
+.breath-btn{font-size:11px;font-weight:700;color:#fff;background:var(--pg);border:none;border-radius:50px;padding:10px 24px;cursor:pointer;transition:all .2s;display:inline-block}
+.breath-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.affirmation-speak{font-size:14px;color:var(--txt);line-height:2;margin:14px 0;padding:16px 20px;background:rgba(207,174,220,0.04);border-radius:10px;border-left:2px solid var(--lav)}
+
+/* ── PULLQUOTE ── */
+.pullquote{position:relative;padding:24px 22px 24px 60px;background:linear-gradient(135deg,var(--dark),var(--darkm));border-radius:14px;border:1px solid rgba(225,77,168,0.25);margin:16px 0}
+.pullquote::before{content:'"';position:absolute;top:4px;left:14px;font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1;color:var(--mag);opacity:.45;pointer-events:none}
+.pullquote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(15px,2.2vw,18px);color:var(--txt);line-height:1.55;position:relative;z-index:1}
+
+/* ── BULLET LIST ── */
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:13px;color:var(--txts);line-height:1.6}
+.bullet-list li::before{content:'✦';color:var(--lav);font-size:11px;flex-shrink:0;margin-top:2px}
+
+/* ── SAVE BAR ── */
+.save-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(8,5,15,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--bdr);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:200}
+.save-status{font-size:10px;color:var(--txtq);font-weight:500}
+.save-status.saved{color:var(--lav)}
+.nav-btns-bottom{display:flex;gap:8px}
+.nav-b{font-size:10px;font-weight:700;padding:8px 18px;border-radius:50px;border:1.5px solid var(--bdr);background:transparent;color:var(--txtm);cursor:pointer;transition:all .2s}
+.nav-b.primary{background:var(--pg);border-color:transparent;color:#fff}
+.nav-b:hover{border-color:var(--lav);color:var(--lav)}
+.nav-b.primary:hover{filter:brightness(1.1);color:#fff}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);margin:20px 0}
+
+/* ── FOOTER ── */
+.footer{position:relative;overflow:hidden;background:var(--dark);padding:44px 24px;text-align:center}
+.footer-inner{position:relative;z-index:2}
+.footer-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--pink);letter-spacing:1.5px;margin-bottom:10px}
+.footer-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--txt);line-height:1.3}
+.footer-title em{color:var(--pink);font-style:italic}
+.footer-brand{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lav);margin-top:18px}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .cal-grid{grid-template-columns:1fr}
+  .body-check-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">The Badass Alchemy Method</div>
+    <h1 class="hero-title">Clear Your Money Blocks<br><em>The Art of Receiving</em></h1>
+    <p class="hero-sub">How to bend your reality and manifest more — starting with your nervous system.</p>
+    <div class="hero-accent">receive. trust. become.</div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="prog-bar">
+  <span class="prog-label">Progress</span>
+  <div class="prog-track"><div class="prog-fill" id="progFill" style="width:16.6%"></div></div>
+  <span class="prog-count" id="progCount">1/6</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="nav-btn active" data-sec="0">01 · Money Story</button>
+  <button class="nav-btn" data-sec="1">02 · Money Blocks</button>
+  <button class="nav-btn" data-sec="2">03 · Affirmations</button>
+  <button class="nav-btn" data-sec="3">04 · Power Days</button>
+  <button class="nav-btn" data-sec="4">05 · Meditation</button>
+  <button class="nav-btn" data-sec="5">06 · Integration</button>
+</nav>
+
+<div class="content">
+
+<!-- ─── SECTION 01 ─── -->
+<div class="section active" id="sec0">
+  <div class="section-num">01</div>
+  <h2 class="section-title">Your Money Story <em>The Audit</em></h2>
+  <p class="section-lead">Money blocks are not mindset issues. They are safety issues. Most women don't repel money — their nervous system doesn't feel safe holding it. Let's find where yours started.</p>
+
+  <div class="card">
+    <div class="eyebrow">Journal Prompts</div>
+    <p style="font-size:12px;color:var(--txtm);margin-bottom:14px;line-height:1.6">Take your time. Write whatever comes up — there are no right answers.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ What emotions come up when I receive unexpected money?</div>
+        <textarea id="j1" rows="3" placeholder="Write freely here..."></textarea>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ Do I feel safer spending money or holding money?</div>
+        <textarea id="j2" rows="3" placeholder="Write freely here..."></textarea>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ Who taught me what "enough" looks like?</div>
+        <textarea id="j3" rows="3" placeholder="Write freely here..."></textarea>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ What am I afraid will change if I become financially free?</div>
+        <textarea id="j4" rows="3" placeholder="Write freely here..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow eyebrow-pink">Body Check</div>
+    <p style="font-size:13px;color:var(--txts);margin-bottom:14px;line-height:1.65">When you think about having more money — where do you feel tension? Tap all that apply.</p>
+    <div class="body-check-grid" id="bodyCheck">
+      <div class="body-zone" data-zone="chest"><div class="body-zone-dot"></div><span class="body-zone-label">🫀 Chest</span></div>
+      <div class="body-zone" data-zone="throat"><div class="body-zone-dot"></div><span class="body-zone-label">🗣 Throat</span></div>
+      <div class="body-zone" data-zone="stomach"><div class="body-zone-dot"></div><span class="body-zone-label">🌀 Stomach</span></div>
+      <div class="body-zone" data-zone="jaw"><div class="body-zone-dot"></div><span class="body-zone-label">😤 Jaw</span></div>
+      <div class="body-zone" data-zone="shoulders"><div class="body-zone-dot"></div><span class="body-zone-label">💪 Shoulders</span></div>
+      <div class="body-zone" data-zone="none"><div class="body-zone-dot"></div><span class="body-zone-label">✨ None / Open</span></div>
+    </div>
+    <div style="margin-top:14px">
+      <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">Notes on what you noticed:</div>
+      <textarea id="bodyNotes" rows="2" placeholder="E.g. 'I noticed tightness in my chest and a held breath...'"></textarea>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">Money blocks are not mindset issues. They are safety issues. Your nervous system doesn't feel safe holding it. That's where we begin.</div>
+  </div>
+</div>
+
+<!-- ─── SECTION 02 ─── -->
+<div class="section" id="sec1">
+  <div class="section-num">02</div>
+  <h2 class="section-title">Common Money Blocks</h2>
+  <p class="section-lead">I associate money with stress or responsibility. Which of these applies to you right now? Select all that resonate.</p>
+
+  <div class="card" id="blocksList">
+    <div class="eyebrow eyebrow-lav">Select Your Blocks</div>
+    <div class="block-item" data-block="0"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I feel guilt when I want more</span></div>
+    <div class="block-item" data-block="1"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I believe wanting wealth makes me "selfish"</span></div>
+    <div class="block-item" data-block="2"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I out-earn people I love and it feels unsafe</span></div>
+    <div class="block-item" data-block="3"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I sabotage when things start working</span></div>
+    <div class="block-item" data-block="4"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I don't trust money to stay</span></div>
+    <div class="block-item" data-block="5"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I associate money with stress or responsibility</span></div>
+    <div class="block-item" data-block="6"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I rush to spend money before it disappears</span></div>
+    <div class="block-item" data-block="7"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I undercharge because I fear being rejected</span></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="eyebrow eyebrow-pink">Where Were These Inherited?</div>
+    <p style="font-size:13px;color:var(--txts);margin-bottom:12px;line-height:1.65">Trace the root. Most money blocks were handed down — not yours to keep.</p>
+    <textarea id="inheritedNotes" rows="3" placeholder="Who taught you this about money? A parent, experience, culture? Write it out..."></textarea>
+  </div>
+
+  <!-- VIDEO SLOT -->
+  <div class="card" style="margin-bottom:14px">
+    <div class="eyebrow">Video · Money Belief System</div>
+    <div id="videoSlot1" class="video-slot">
+      <div class="video-icon">🎬</div>
+      <div class="video-slot-title">Money Belief System</div>
+      <div class="video-slot-desc">Add your YouTube URL below to embed your video here.</div>
+      <div class="video-url-input">
+        <input type="text" id="vidUrl1" placeholder="Paste YouTube URL here, e.g. https://www.youtube.com/watch?v=..." />
+        <button class="video-load-btn" onclick="loadVideo('vidUrl1','vidEmbed1','videoSlot1')">Load Video</button>
+      </div>
+    </div>
+    <iframe id="vidEmbed1" class="video-embed" allowfullscreen></iframe>
+  </div>
+
+  <div class="release-box">
+    <div class="eyebrow" style="margin-bottom:12px">Section 3 · The Clearing Exercise</div>
+    <div style="font-size:11px;font-weight:600;color:var(--mag);margin-bottom:10px;letter-spacing:1px;text-transform:uppercase">The Release Statement — Write + Speak</div>
+    <div class="release-line">
+      "I release the belief that money is unsafe.<br>
+      I release the belief that I must struggle to be worthy.<br>
+      I release the belief that ease makes me lazy or ungrateful."
+    </div>
+    <div style="margin-top:16px;font-size:13px;font-style:italic;color:var(--txt);line-height:1.65">
+      <strong style="color:var(--lav)">Then:</strong> "I choose to build a relationship with money based on trust, neutrality, and self-respect."
+    </div>
+    <div style="margin-top:16px">
+      <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">Write your own release statement:</div>
+      <textarea id="releaseWrite" rows="3" placeholder="I release the belief that..."></textarea>
+    </div>
+    <button class="burn-btn" id="burnBtn" onclick="burnIt()">🔥 Write It + Release It — POOF</button>
+    <div id="burnMsg" style="display:none;margin-top:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--mint);text-align:center;color:var(--lav)">
+      ✨ Released. You can move into a new realm of abundance. ✨
+    </div>
+  </div>
+</div>
+
+<!-- ─── SECTION 03 ─── -->
+<div class="section" id="sec2">
+  <div class="section-num">03</div>
+  <h2 class="section-title">Daily Money <em>Affirmations</em></h2>
+  <p class="section-lead">Do this along with the Magnificent Money Manifestation Track. Pick 3 per day. Consistency over volume.</p>
+
+  <div class="card">
+    <div class="pick-counter">You've picked <span id="pickCount">0</span>/3 for today. <span id="pickDone" style="color:var(--lav);display:none">✦ Perfect.</span></div>
+    <div id="todayCard" class="today-card" style="font-family:'Montserrat',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>
+  </div>
+
+  <div class="aff-set">
+    <div class="aff-set-label">Daily Core (Morning or Night)</div>
+    <div id="affCore">
+      <div class="aff-item" data-aff="Money is safe with me."><div class="aff-dot"></div>Money is safe with me.</div>
+      <div class="aff-item" data-aff="I am calm when I receive."><div class="aff-dot"></div>I am calm when I receive.</div>
+      <div class="aff-item" data-aff="I trust myself to handle more."><div class="aff-dot"></div>I trust myself to handle more.</div>
+      <div class="aff-item" data-aff="I do not rush money. Money meets me."><div class="aff-dot"></div>I do not rush money. Money meets me.</div>
+      <div class="aff-item" data-aff="Wealth expands when I am regulated."><div class="aff-dot"></div>Wealth expands when I am regulated.</div>
+      <div class="aff-item" data-aff="I am available for ease."><div class="aff-dot"></div>I am available for ease.</div>
+      <div class="aff-item" data-aff="I allow money to stay."><div class="aff-dot"></div>I allow money to stay.</div>
+    </div>
+  </div>
+
+  <div class="aff-set">
+    <div class="aff-set-label" style="color:var(--lav)">Identity Level (Read Slowly)</div>
+    <div id="affIdentity">
+      <div class="aff-item" data-aff="I am a woman who holds wealth with grace."><div class="aff-dot"></div>I am a woman who holds wealth with grace.</div>
+      <div class="aff-item" data-aff="My nervous system is calibrated for abundance."><div class="aff-dot"></div>My nervous system is calibrated for abundance.</div>
+      <div class="aff-item" data-aff="I don't chase money. I create capacity for it."><div class="aff-dot"></div>I don't chase money. I create capacity for it.</div>
+      <div class="aff-item" data-aff="I am available for aligned opportunities."><div class="aff-dot"></div>I am available for aligned opportunities.</div>
+      <div class="aff-item" data-aff="I receive without apology."><div class="aff-dot"></div>I receive without apology.</div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">Consistency over volume. Three affirmations felt deeply is worth more than twelve rushed ones.</div>
+  </div>
+</div>
+
+<!-- ─── SECTION 04 ─── -->
+<div class="section" id="sec3">
+  <div class="section-num">04</div>
+  <h2 class="section-title">Ritual Power Days <em>2026</em></h2>
+  <p class="section-lead">You don't need every cosmic event — just the ones that matter. Practical, not woo woo chaos.</p>
+
+  <div class="cal-legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#7B68EE"></div>New Moon</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#CFAEDC"></div>Full Moon</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#FA9CE0"></div>Eclipse</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#E14DA8"></div>Portal</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#FFD700"></div>Power Day</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#8effd5"></div>Solstice</div>
+  </div>
+
+  <!-- MONTHLY ANCHORS -->
+  <div class="card" style="margin-bottom:14px">
+    <div class="eyebrow eyebrow-lav">Monthly Anchors — Use Every Month</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
+      <div style="padding:16px;background:rgba(123,104,238,0.08);border:1px solid rgba(123,104,238,0.3);border-radius:12px;text-align:center">
+        <div style="font-size:20px;margin-bottom:6px">🌑</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt)">New Moons</div>
+        <div style="font-size:11px;color:var(--txtm);margin-top:4px;font-style:italic">Intention + money goals</div>
+      </div>
+      <div style="padding:16px;background:rgba(207,174,220,0.07);border:1px solid rgba(207,174,220,0.25);border-radius:12px;text-align:center">
+        <div style="font-size:20px;margin-bottom:6px">🌕</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt)">Full Moons</div>
+        <div style="font-size:11px;color:var(--txtm);margin-top:4px;font-style:italic">Release + clearing scarcity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-month-label">January</div>
+  <div class="cal-grid">
+    <div class="cal-event portal"><div class="cal-event-date">🔥 JAN 1, 2026</div><div class="cal-event-name">Year Shift</div><div class="cal-event-desc">Identity reset, financial intention setting</div></div>
+  </div>
+
+  <div class="cal-month-label">February</div>
+  <div class="cal-grid">
+    <div class="cal-event portal"><div class="cal-event-date">🌑 FEB 17, 2026</div><div class="cal-event-name">Lunar New Year Reset</div><div class="cal-event-desc">Fire Horse energy · Biggest money reset portal of the year</div></div>
+  </div>
+
+  <div class="cal-month-label">March</div>
+  <div class="cal-grid">
+    <div class="cal-event eclipse"><div class="cal-event-date">✨ MAR 14, 2026</div><div class="cal-event-name">Lunar Eclipse</div><div class="cal-event-desc">Accelerated timelines · Release what no longer serves</div></div>
+    <div class="cal-event eclipse"><div class="cal-event-date">✨ MAR 29, 2026</div><div class="cal-event-name">Solar Eclipse</div><div class="cal-event-desc">New beginnings · Set powerful financial intentions</div></div>
+  </div>
+
+  <div class="cal-month-label">June</div>
+  <div class="cal-grid">
+    <div class="cal-event power"><div class="cal-event-date">💛 JUN 6, 2026</div><div class="cal-event-name">6/6 Power Day</div><div class="cal-event-desc">Alignment + amplification</div></div>
+  </div>
+
+  <div class="cal-month-label">August</div>
+  <div class="cal-grid">
+    <div class="cal-event portal" style="grid-column:1/-1"><div class="cal-event-date">🦁 AUG 8, 2026 (8/8)</div><div class="cal-event-name">Lion's Gate Portal</div><div class="cal-event-desc">Money + leadership + self-worth · Perfect for: charging more, claiming wealth without apology</div></div>
+  </div>
+
+  <div class="cal-month-label">September</div>
+  <div class="cal-grid">
+    <div class="cal-event eclipse"><div class="cal-event-date">✨ SEP 7, 2026</div><div class="cal-event-name">Lunar Eclipse</div><div class="cal-event-desc">Release survival patterns, accelerate timelines</div></div>
+    <div class="cal-event eclipse"><div class="cal-event-date">✨ SEP 21, 2026</div><div class="cal-event-name">Solar Eclipse</div><div class="cal-event-desc">New identity anchoring · Claim your next level</div></div>
+    <div class="cal-event power"><div class="cal-event-date">💛 SEP 9, 2026</div><div class="cal-event-name">9/9 Power Day</div><div class="cal-event-desc">Completion + transition · Release the old chapter</div></div>
+  </div>
+
+  <div class="cal-month-label">November</div>
+  <div class="cal-grid">
+    <div class="cal-event power"><div class="cal-event-date">💛 NOV 11, 2026</div><div class="cal-event-name">11/11 Portal</div><div class="cal-event-desc">Master number day · Alignment + amplification</div></div>
+  </div>
+
+  <div class="cal-month-label">December</div>
+  <div class="cal-grid">
+    <div class="cal-event solstice" style="grid-column:1/-1"><div class="cal-event-date">🌿 DEC 21, 2026</div><div class="cal-event-name">Winter Solstice</div><div class="cal-event-desc">Year-end integration · Review money growth, release survival patterns, set 2027 tone</div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="eyebrow eyebrow-pink">Every Month</div>
+    <ul class="bullet-list">
+      <li>Every <strong>8th of the month</strong> — money, authority, abundance (mark these in your calendar now)</li>
+      <li>Set intentions on New Moons <strong>lightly</strong></li>
+      <li>Release on Full Moons <strong>heavily</strong></li>
+      <li>These are non-negotiable ritual days</li>
+    </ul>
+    <div style="margin-top:12px">
+      <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">Your notes for this month's ritual:</div>
+      <textarea id="ritualNotes" rows="2" placeholder="What are you setting intention on this cycle?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SECTION 05 ─── -->
+<div class="section" id="sec4">
+  <div class="section-num">05</div>
+  <h2 class="section-title">The Money Manifestation <em>Track</em></h2>
+  <p class="section-lead">Money Nervous System Recalibration — Private Audio Rituals. This meditation is designed to shift your subconscious relationship with money — not force manifestation, but make receiving feel safe.</p>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="eyebrow">Magnificent Money Manifestation</div>
+    <div id="videoSlot2" class="video-slot">
+      <div class="video-icon">🎶</div>
+      <div class="video-slot-title">Magnificent Money Manifestation</div>
+      <div class="video-slot-desc">Paste your YouTube link below. Listen 3x a day for a week straight.</div>
+      <div class="video-url-input">
+        <input type="text" id="vidUrl2" placeholder="Paste YouTube URL here..." />
+        <button class="video-load-btn" onclick="loadVideo('vidUrl2','vidEmbed2','videoSlot2')">Load Video</button>
+      </div>
+    </div>
+    <iframe id="vidEmbed2" class="video-embed" allowfullscreen></iframe>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow eyebrow-lav">Instructions</div>
+    <ul class="bullet-list" style="margin-bottom:14px">
+      <li>Listen with headphones when possible</li>
+      <li>Do not multitask during the first listen</li>
+    </ul>
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--mag);margin-bottom:10px">Use during:</div>
+    <ul class="bullet-list">
+      <li>New Moons</li>
+      <li>Full Moons</li>
+      <li>Money journaling</li>
+      <li>Before sleep</li>
+      <li>When you wake up every day</li>
+    </ul>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">That distinction = credibility. Not forcing manifestation — making receiving feel safe.</div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow eyebrow-pink">Track Your Listening Streak</div>
+    <p style="font-size:12px;color:var(--txtm);margin-bottom:14px;line-height:1.6">3x a day for a week straight. Tap each day you complete it.</p>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px" id="streakGrid">
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--txtm)">Notes on what you notice after each session:</div>
+    <textarea id="meditNotes" rows="2" placeholder="Shifts, sensations, insights..." style="margin-top:8px"></textarea>
+  </div>
+</div>
+
+<!-- ─── SECTION 06 ─── -->
+<div class="section" id="sec5">
+  <div class="section-num">06</div>
+  <h2 class="section-title">Integration: Becoming the Woman <em>Who Holds Wealth</em></h2>
+  <p class="section-lead">Clearing money blocks is powerful. Rewriting your relationship with money is necessary. But abundance doesn't stabilize until your identity catches up.</p>
+
+  <div class="card">
+    <div class="eyebrow">Wealth Is Not a Moment. It's a Capacity.</div>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:14px">Many women can manifest money once. A bonus. A surge. A good month. But then:</p>
+    <ul class="bullet-list" style="margin-bottom:14px">
+      <li>they feel pressure</li>
+      <li>they rush decisions</li>
+      <li>they overspend or undercharge</li>
+      <li>they shrink or self-sabotage</li>
+    </ul>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:10px">Not because they're irresponsible — but because their nervous system hasn't stabilized at that level yet.</p>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:17px;color:var(--lav);margin-bottom:8px">Wealth requires capacity, not just desire. Capacity to:</div>
+    <ul class="bullet-list">
+      <li>make calm decisions</li>
+      <li>delay reaction</li>
+      <li>trust yourself</li>
+      <li>allow money to stay</li>
+    </ul>
+  </div>
+
+  <div class="pullquote">
+    <div class="pullquote-text">Money doesn't stay with the woman who wants it. It stays with the woman who feels safe, steady, and self-led while holding it.</div>
+  </div>
+
+  <!-- GUIDED EMBODIMENT -->
+  <div class="card">
+    <div class="eyebrow eyebrow-pink">Guided Embodiment Practice</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--txt);margin-bottom:14px">Stabilizing Your Next Level</div>
+
+    <div id="breathStep0" class="breath-box">
+      <div class="breath-prompt">Take a breath.<br>Place one hand on your chest.</div>
+      <button class="breath-btn" onclick="nextBreath(1)">I'm here ✦</button>
+    </div>
+    <div id="breathStep1" class="breath-box" style="display:none">
+      <div class="breath-prompt">Ask yourself:<br><span style="font-size:14px;color:var(--lav)">How does my body feel when I imagine holding significantly more money?<br><br>Where do I tense?<br>What part of me feels alert or cautious?</span></div>
+      <textarea style="text-align:left;margin:14px 0 0" id="embodimentReflect" rows="3" placeholder="Write what comes up..."></textarea>
+      <button class="breath-btn" onclick="nextBreath(2)" style="margin-top:12px">Continue ✦</button>
+    </div>
+    <div id="breathStep2" class="breath-box" style="display:none">
+      <div class="breath-prompt" style="margin-bottom:8px">Now repeat slowly, out loud if you can:</div>
+      <div class="affirmation-speak">
+        I am safe holding more.<br>
+        I trust myself at higher levels.<br>
+        I can lead myself through expansion.<br>
+        Wealth does not destabilize me.<br>
+        It supports me.
+      </div>
+      <button class="breath-btn" onclick="nextBreath(3)">I've spoken these ✦</button>
+    </div>
+    <div id="breathStep3" class="breath-box" style="display:none;background:linear-gradient(135deg,rgba(225,77,168,0.12),rgba(207,174,220,0.08))">
+      <div style="font-size:28px;margin-bottom:10px">✨</div>
+      <div class="breath-prompt" style="color:var(--pink)">Let your body settle before moving on.<br>This is how identity integrates.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--lav);margin-top:10px">you are...</div>
+      <button class="breath-btn" onclick="nextBreath(0)" style="margin-top:14px;background:rgba(225,77,168,0.2);color:var(--lav);border:1.5px solid var(--lav)">Begin Again</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow eyebrow-lav">Wealth is Self-Leadership</div>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:14px">At this stage, money is no longer the teacher. You are.</p>
+    <div style="font-size:13px;color:var(--lav);font-weight:600;margin-bottom:8px">You decide:</div>
+    <ul class="bullet-list" style="margin-bottom:14px">
+      <li>what feels aligned</li>
+      <li>what is worth your energy</li>
+      <li>what standards you keep</li>
+      <li>what you no longer tolerate</li>
+    </ul>
+    <div class="divider"></div>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:6px">Money responds to <strong style="color:var(--lav)">leadership</strong>. Not control. Not force. Not anxiety. When you lead yourself well, money follows cleanly.</div>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,rgba(225,77,168,0.09),rgba(207,174,220,0.06));border-color:rgba(207,174,220,0.25)">
+    <div class="eyebrow eyebrow-pink">From Attraction to Availability</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--txt);margin-bottom:12px">You no longer need to chase money.</div>
+    <p style="font-size:13px;color:var(--txts);line-height:1.75;margin-bottom:10px">Your work now is availability. Availability looks like:</p>
+    <ul class="bullet-list" style="margin-bottom:14px">
+      <li>showing up consistently</li>
+      <li>making clear decisions</li>
+      <li>following through</li>
+      <li>allowing support</li>
+      <li>resting without guilt</li>
+    </ul>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--lav);margin:10px 0">This is not passive. This is mature. This is abundance that lasts.</div>
+    <div class="divider"></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--txt);margin-bottom:8px">You are not "becoming wealthy someday."</div>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.9">You are becoming the woman who can hold it.<br>Calmly. Cleanly. Without self-betrayal.<br><br>This is the art of receiving abundance.<br>And this is where the work becomes your life.</p>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">Integration Notes</div>
+    <textarea id="integrationNotes" rows="4" placeholder="What's shifting for you? What are you releasing? What are you claiming?"></textarea>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<!-- SAVE BAR -->
+<div class="save-bar">
+  <div class="save-status" id="saveStatus">All responses saved locally ✦</div>
+  <div class="nav-btns-bottom">
+    <button class="nav-b" id="prevBtn" onclick="changeSection(-1)">← Prev</button>
+    <button class="nav-b primary" id="nextBtn" onclick="changeSection(1)">Next →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <canvas id="footerCanvas"></canvas>
+  <div class="footer-inner">
+    <div class="footer-script">receive. trust. become.</div>
+    <div class="footer-title">The Art of Receiving <em>Abundance</em></div>
+    <div class="footer-brand">✦ The Badass Alchemy Method · Be a Beautiful Badass ✦</div>
+  </div>
+</div>
+
+<script>
+// ── STAR FIELD ──
+function drawStars(canvasId,count){
+  const c=document.getElementById(canvasId);if(!c)return;
+  const ctx=c.getContext('2d');
+  const W=c.width=c.offsetWidth,H=c.height=c.offsetHeight;
+  ctx.clearRect(0,0,W,H);
+  for(let i=0;i<count;i++){
+    const x=Math.random()*W,y=Math.random()*H,r=Math.random()*1.3+0.2,a=Math.random()*.7+.2;
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle=Math.random()>.65?'#CFAEDC':'#ffffff';
+    ctx.globalAlpha=a;ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  const g=ctx.createRadialGradient(W*.7,H*.3,0,W*.7,H*.3,W*.45);
+  g.addColorStop(0,'rgba(207,174,220,0.09)');g.addColorStop(1,'transparent');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+}
+drawStars('heroCanvas',160);drawStars('footerCanvas',100);
+
+// ── SECTIONS ──
+let cur=0;
+const secs=document.querySelectorAll('.section');
+const navBtns=document.querySelectorAll('.nav-btn');
+function showSection(n){
+  secs[cur].classList.remove('active');
+  navBtns[cur].classList.remove('active');
+  cur=n;
+  secs[cur].classList.add('active');
+  navBtns[cur].classList.add('active');
+  document.getElementById('progFill').style.width=((cur+1)/6*100)+'%';
+  document.getElementById('progCount').textContent=(cur+1)+'/6';
+  document.getElementById('prevBtn').disabled=cur===0;
+  document.getElementById('nextBtn').textContent=cur===5?'Complete ✦':'Next →';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function changeSection(dir){const n=cur+dir;if(n>=0&&n<6)showSection(n);}
+navBtns.forEach((b,i)=>b.addEventListener('click',()=>showSection(i)));
+
+// ── BODY CHECK ──
+document.querySelectorAll('.body-zone').forEach(z=>{
+  z.addEventListener('click',()=>{z.classList.toggle('felt');saveAll();});
+});
+
+// ── MONEY BLOCKS ──
+document.querySelectorAll('.block-item').forEach(b=>{
+  b.addEventListener('click',()=>{b.classList.toggle('checked');saveAll();});
+});
+
+// ── BURN IT ──
+function burnIt(){
+  const btn=document.getElementById('burnBtn');
+  const msg=document.getElementById('burnMsg');
+  btn.classList.add('burn-flash');
+  setTimeout(()=>{btn.classList.remove('burn-flash');btn.textContent='🔥 Released';btn.disabled=true;msg.style.display='block';saveAll();},600);
+}
+
+// ── AFFIRMATIONS ──
+let picked=[];
+document.querySelectorAll('.aff-item').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const text=a.dataset.aff;
+    if(a.classList.contains('picked')){
+      a.classList.remove('picked');picked=picked.filter(x=>x!==text);
+    } else {
+      if(picked.length>=3){alert('Pick only 3 for today. Deselect one first ✦');return;}
+      a.classList.add('picked');picked.push(text);
+    }
+    const cnt=document.getElementById('pickCount');
+    const done=document.getElementById('pickDone');
+    const card=document.getElementById('todayCard');
+    cnt.textContent=picked.length;
+    done.style.display=picked.length===3?'inline':'none';
+    card.innerHTML=picked.length?picked.map(t=>`<div style="margin-bottom:10px;font-style:italic;font-size:14px">✦ ${t}</div>`).join(''):'Your 3 affirmations for today will appear here ✦';
+    card.style.fontFamily=picked.length?"'Cormorant Garamond',serif":"'Montserrat',sans-serif";
+    card.style.fontStyle=picked.length?'italic':'normal';
+    card.style.fontSize=picked.length?'16px':'12px';
+    card.style.color=picked.length?'var(--txt)':'var(--txtq)';
+    saveAll();
+  });
+});
+
+// ── STREAK ──
+const streakDays=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const streakGrid=document.getElementById('streakGrid');
+let streak=JSON.parse(localStorage.getItem('ba_streak')||'{}');
+streakDays.forEach((d,i)=>{
+  const btn=document.createElement('div');
+  btn.style.cssText='padding:10px 4px;border-radius:10px;border:1px solid var(--bdr);background:rgba(207,174,220,0.04);text-align:center;cursor:pointer;transition:all .2s;font-size:10px;color:var(--txtm);font-weight:600';
+  btn.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✅':'○'}</div>${d}`;
+  btn.addEventListener('click',()=>{streak[i]=!streak[i];btn.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✅':'○'}</div>${d}`;localStorage.setItem('ba_streak',JSON.stringify(streak));});
+  streakGrid.appendChild(btn);
+});
+
+// ── EMBODIMENT STEPS ──
+function nextBreath(step){
+  for(let i=0;i<4;i++){
+    const el=document.getElementById('breathStep'+i);
+    if(el)el.style.display=i===step?'block':'none';
+  }
+}
+
+// ── VIDEO LOADER ──
+function loadVideo(inputId,embedId,slotId){
+  const url=document.getElementById(inputId).value.trim();
+  let vid='';
+  const m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if(m)vid=m[1];
+  if(!vid){alert('Please enter a valid YouTube URL');return;}
+  const iframe=document.getElementById(embedId);
+  iframe.src=`https://www.youtube.com/embed/${vid}`;
+  iframe.style.display='block';
+  document.getElementById(slotId).style.display='none';
+  localStorage.setItem('ba_vid_'+inputId,url);
+}
+
+// ── SAVE / LOAD ──
+const textareaIds=['j1','j2','j3','j4','bodyNotes','inheritedNotes','releaseWrite','ritualNotes','meditNotes','embodimentReflect','integrationNotes'];
+function saveAll(){
+  textareaIds.forEach(id=>{const el=document.getElementById(id);if(el)localStorage.setItem('ba_'+id,el.value);});
+  // body zones
+  const zones={};document.querySelectorAll('.body-zone').forEach(z=>zones[z.dataset.zone]=z.classList.contains('felt'));
+  localStorage.setItem('ba_zones',JSON.stringify(zones));
+  // blocks
+  const blocks={};document.querySelectorAll('.block-item').forEach(b=>blocks[b.dataset.block]=b.classList.contains('checked'));
+  localStorage.setItem('ba_blocks',JSON.stringify(blocks));
+  // affirmations
+  localStorage.setItem('ba_picked',JSON.stringify(picked));
+  // burn
+  const burnDone=document.getElementById('burnBtn').disabled;
+  localStorage.setItem('ba_burnDone',burnDone?'1':'0');
+  const status=document.getElementById('saveStatus');
+  status.textContent='Saved ✦';status.className='save-status saved';
+  clearTimeout(window._saveTimer);
+  window._saveTimer=setTimeout(()=>{status.textContent='All responses saved locally ✦';status.className='save-status saved';},2000);
+}
+  // pre-load hardcoded videos
+  const HARDCODED_VIDS={'vidUrl1':'https://youtu.be/7LkWleRL7ig','vidUrl2':'https://youtu.be/hpPjY5H11Bs'};
+
+  function loadAll(){
+  textareaIds.forEach(id=>{const el=document.getElementById(id);if(el&&localStorage.getItem('ba_'+id))el.value=localStorage.getItem('ba_'+id);});
+  const zones=JSON.parse(localStorage.getItem('ba_zones')||'{}');
+  document.querySelectorAll('.body-zone').forEach(z=>{if(zones[z.dataset.zone])z.classList.add('felt');});
+  const blocks=JSON.parse(localStorage.getItem('ba_blocks')||'{}');
+  document.querySelectorAll('.block-item').forEach(b=>{if(blocks[b.dataset.block])b.classList.add('checked');});
+  const savedPicked=JSON.parse(localStorage.getItem('ba_picked')||'[]');
+  if(savedPicked.length){
+    savedPicked.forEach(txt=>{
+      const a=document.querySelector(`.aff-item[data-aff="${txt}"]`);
+      if(a){a.classList.add('picked');picked.push(txt);}
+    });
+    document.getElementById('pickCount').textContent=picked.length;
+    if(picked.length===3)document.getElementById('pickDone').style.display='inline';
+    const card=document.getElementById('todayCard');
+    card.innerHTML=picked.map(t=>`<div style="margin-bottom:10px;font-style:italic;font-size:14px">✦ ${t}</div>`).join('');
+    card.style.fontFamily="'Cormorant Garamond',serif";card.style.fontStyle='italic';card.style.fontSize='16px';card.style.color='var(--txt)';
+  }
+  if(localStorage.getItem('ba_burnDone')==='1'){
+    document.getElementById('burnBtn').textContent='🔥 Released';
+    document.getElementById('burnBtn').disabled=true;
+    document.getElementById('burnMsg').style.display='block';
+  }
+  // load videos — hardcoded first, localStorage overrides if present
+  ['vidUrl1','vidUrl2'].forEach((id,i)=>{
+    const saved=localStorage.getItem('ba_vid_'+id)||HARDCODED_VIDS[id];
+    if(saved){document.getElementById(id).value=saved;loadVideo(id,'vidEmbed'+(i+1),'videoSlot'+(i+1));}
+  });
+}
+// auto-save on input
+textareaIds.forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',saveAll);});
+loadAll();
+</script>
+</body>
+</html>
