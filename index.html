@@ -9,193 +9,411 @@
 
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#08050F;--bgm:#0F0818;--dark:#0A041A;--darkm:#140828;
-  --lav:#CFAEDC;--pink:#FA9CE0;--mag:#E14DA8;
-  --txt:#F0E8F8;--txts:#D4C0E8;--txtm:#A888C8;--txtf:#7A5898;--txtq:#5A3878;
-  --bdr:rgba(207,174,220,0.13);--bdrb:rgba(207,174,220,0.24);
-  --shd:rgba(225,77,168,0.08);--shh:rgba(225,77,168,0.2);
-  --card:rgba(20,8,40,0.88);--pg:linear-gradient(135deg,#E14DA8,#FA9CE0);
-  --lg:linear-gradient(135deg,#CFAEDC,#FA9CE0);
+  --bg:#0D0610;
+  --bgm:#180B1E;
+  --dark:#0D0618;
+  --darkm:#461D34;
+  --accent:#733960;
+  --accentlt:#B16AA2;
+  --tertiary:#9B4E7A;
+  --detail:#C4789A;
+  --orchid:#C6B6CD;
+  --moonprl:#F7EDF1;
+  --txt:#F7EDF1;
+  --txts:#E8D4E0;
+  --txtm:#C4A0B8;
+  --txtf:#8A6080;
+  --txtq:#5A3A50;
+  --bdr:rgba(179,106,162,0.18);
+  --bdrb:rgba(179,106,162,0.32);
+  --shd:rgba(36,10,25,0.5);
+  --shh:rgba(115,57,96,0.35);
+  --card:rgba(18,6,28,0.82);
 }
+
+/* GRADIENTS */
+.grad-dark{background:linear-gradient(160deg,#0D0618 0%,#1A0828 30%,#3A0F30 65%,#5C1640 100%)}
+.grad-mid{background:linear-gradient(150deg,#110820 0%,#2A0D3A 35%,#4A1545 60%,#7A1E50 100%)}
+
 html,body{background:var(--bg);color:var(--txts);font-family:'Montserrat',sans-serif;min-height:100vh;overflow-x:hidden}
-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 ::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:rgba(207,174,220,0.25);border-radius:2px}
+::-webkit-scrollbar-thumb{background:rgba(179,106,162,0.3);border-radius:2px}
+
+/* ── NEBULA BG ── */
+.nebula-bg{
+  position:fixed;inset:0;z-index:0;
+  background-image:url('https://raw.githubusercontent.com/badassalchemy/imageassets/main/dark%20nebula%20baxckground.jpg');
+  background-size:cover;background-position:center;background-attachment:fixed;
+  filter:brightness(0.45) saturate(1.3);
+}
+.nebula-overlay{
+  position:fixed;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(13,6,16,0.55) 0%,rgba(13,6,24,0.72) 40%,rgba(13,6,16,0.88) 100%);
+}
+.page-wrap{position:relative;z-index:2}
+
+/* Stars CSS */
+.stars{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%,rgba(247,237,241,0.5),transparent),
+    radial-gradient(1.5px 1.5px at 55% 12%,rgba(247,237,241,0.4),transparent),
+    radial-gradient(1px 1px at 82% 58%,rgba(247,237,241,0.45),transparent),
+    radial-gradient(1px 1px at 38% 78%,rgba(247,237,241,0.3),transparent),
+    radial-gradient(1px 1px at 8% 68%,rgba(247,237,241,0.35),transparent),
+    radial-gradient(1.5px 1.5px at 92% 22%,rgba(247,237,241,0.5),transparent),
+    radial-gradient(1px 1px at 70% 88%,rgba(196,120,154,0.5),transparent),
+    radial-gradient(1px 1px at 28% 45%,rgba(177,106,162,0.4),transparent),
+    radial-gradient(1.5px 1.5px at 48% 35%,rgba(247,237,241,0.3),transparent),
+    radial-gradient(1px 1px at 62% 65%,rgba(247,237,241,0.35),transparent);
+}
+.glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 60% 55%,rgba(200,60,120,0.18),transparent 60%),
+    radial-gradient(ellipse at 20% 30%,rgba(100,30,90,0.22),transparent 55%);
+}
 
 /* ── HERO ── */
-.hero{position:relative;overflow:hidden;min-height:260px;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;padding:56px 24px 44px}
+.hero{
+  position:relative;overflow:hidden;
+  min-height:280px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:64px 24px 52px;
+}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,6,24,0.3),rgba(70,29,52,0.4));z-index:0}
 .hero-inner{position:relative;z-index:2}
-.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--mag);text-transform:uppercase;margin-bottom:14px}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,42px);font-weight:700;color:var(--txt);line-height:1.12;margin-bottom:10px}
-.hero-title em{color:var(--pink);font-style:italic;font-weight:400}
-.hero-sub{font-size:12px;color:var(--txtm);line-height:1.7;max-width:380px;margin:0 auto 18px}
-.hero-accent{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--lav);letter-spacing:1.5px}
+.hero-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--detail);letter-spacing:1.5px;margin-bottom:10px}
+.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--accentlt);text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5.5vw,48px);font-weight:700;color:var(--txt);line-height:1.1;margin-bottom:8px}
+.hero-title em{color:var(--accentlt);font-style:italic;font-weight:400}
+.hero-sub{font-size:12px;color:var(--txtm);line-height:1.75;max-width:380px;margin:0 auto 18px}
+.hero-accent{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--accentlt);letter-spacing:2px;opacity:0.85}
 
-/* ── PROGRESS BAR ── */
-.prog-bar{background:var(--dark);padding:10px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
-.prog-label{font-size:8px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--txtq);white-space:nowrap}
-.prog-track{flex:1;height:3px;background:rgba(207,174,220,0.1);border-radius:2px;overflow:hidden}
-.prog-fill{height:100%;background:var(--pg);border-radius:2px;transition:width .4s ease}
-.prog-count{font-size:9px;font-weight:700;color:var(--mag);white-space:nowrap}
+/* ── PROGRESS ── */
+.prog-bar{
+  background:rgba(13,6,16,0.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  padding:10px 24px;display:flex;align-items:center;gap:12px;
+  border-bottom:1px solid var(--bdr);
+  position:sticky;top:0;z-index:100;
+}
+.prog-label{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--txtq);white-space:nowrap}
+.prog-track{flex:1;height:3px;background:rgba(179,106,162,0.1);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accentlt));border-radius:2px;transition:width .4s ease}
+.prog-count{font-size:9px;font-weight:700;color:var(--accentlt);white-space:nowrap}
 
 /* ── NAV ── */
-.nav{position:sticky;top:41px;z-index:99;background:rgba(8,5,15,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.nav-btn{font-size:8px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;padding:14px 14px 12px;border:none;background:none;color:var(--txtq);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:color .2s;border-bottom:2px solid transparent}
-.nav-btn.active{color:var(--mag);border-bottom-color:var(--mag)}
+.nav{
+  position:sticky;top:41px;z-index:99;
+  background:rgba(13,6,16,0.95);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--bdr);
+  display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.nav-btn{
+  font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:14px 14px 12px;border:none;background:none;
+  color:var(--txtq);cursor:pointer;white-space:nowrap;flex-shrink:0;
+  transition:color .2s;border-bottom:2px solid transparent;
+}
+.nav-btn.active{color:var(--accentlt);border-bottom-color:var(--accentlt)}
 
-/* ── LAYOUT ── */
-.content{max-width:680px;margin:0 auto;padding:32px 20px 80px}
+/* ── CONTENT ── */
+.content{max-width:680px;margin:0 auto;padding:32px 20px 100px}
 .section{display:none}
 .section.active{display:block;animation:fadeUp .4s ease both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── CARDS ── */
-.card{background:var(--card);border-radius:14px;border:1px solid var(--bdr);box-shadow:0 2px 18px var(--shd);backdrop-filter:blur(12px);padding:22px 20px;margin-bottom:14px}
-.card-hv{transition:transform .2s,box-shadow .2s}
-.card-hv:hover{transform:translateY(-2px);box-shadow:0 8px 28px var(--shh)}
+/* ── SECTION HEADER ── */
+.sec-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:60px;font-weight:700;
+  color:rgba(179,106,162,0.08);
+  line-height:1;margin-bottom:-10px;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,4vw,34px);font-weight:700;
+  color:var(--txt);line-height:1.15;margin-bottom:8px;
+}
+.sec-title em{color:var(--accentlt);font-style:italic;font-weight:400}
+.sec-lead{font-size:13px;color:var(--txts);line-height:1.8;margin-bottom:22px}
 
-/* ── EYEBROW / HEADLINE ── */
-.eyebrow{font-size:9px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--mag);margin-bottom:8px}
-.eyebrow-lav{color:var(--lav)}
-.eyebrow-pink{color:var(--pink)}
-.section-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:rgba(207,174,220,0.09);line-height:1;margin-bottom:-8px}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,32px);font-weight:700;color:var(--txt);line-height:1.2;margin-bottom:6px}
-.section-title em{color:var(--pink);font-style:italic}
-.section-lead{font-size:13px;color:var(--txts);line-height:1.75;margin-bottom:20px}
+/* ── CARD ── */
+.card{
+  background:var(--card);
+  border-radius:14px;
+  border:1px solid var(--bdr);
+  box-shadow:0 4px 24px var(--shd);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding:22px 20px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.card-stars .stars{opacity:0.4}
 
-/* ── TEXTAREA / INPUT ── */
-textarea,input[type=text]{width:100%;background:rgba(207,174,220,0.05);border:1px solid var(--bdr);border-radius:10px;color:var(--txt);font-family:'Montserrat',sans-serif;font-size:13px;padding:14px 16px;resize:vertical;outline:none;transition:border-color .2s;line-height:1.65}
-textarea:focus,input[type=text]:focus{border-color:var(--lav)}
+/* ── LABELS ── */
+.eyebrow{font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accentlt);margin-bottom:10px}
+.eyebrow-orchid{color:var(--orchid)}
+.eyebrow-detail{color:var(--detail)}
+
+/* ── TEXTAREA ── */
+textarea,input[type=text]{
+  width:100%;
+  background:rgba(179,106,162,0.06);
+  border:1px solid var(--bdr);border-radius:10px;
+  color:var(--txt);font-family:'Montserrat',sans-serif;font-size:13px;
+  padding:14px 16px;resize:vertical;outline:none;
+  transition:border-color .2s;line-height:1.65;
+}
+textarea:focus,input:focus{border-color:var(--accentlt)}
 textarea::placeholder,input::placeholder{color:var(--txtq)}
 
-/* ── BODY CHECK ROW ── */
-.body-check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.body-zone{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;background:rgba(207,174,220,0.04);border:1px solid var(--bdr);cursor:pointer;transition:all .2s}
-.body-zone.felt{border-color:var(--lav);background:rgba(207,174,220,0.1);box-shadow:0 0 14px rgba(207,174,220,0.15)}
-.body-zone-dot{width:10px;height:10px;border-radius:50%;background:var(--bdr);border:1px solid var(--lav);transition:all .2s;flex-shrink:0}
-.body-zone.felt .body-zone-dot{background:var(--lav);border-color:var(--lav)}
-.body-zone-label{font-size:13px;color:var(--txts)}
+/* ── BODY ZONES ── */
+.body-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.body-zone{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 15px;border-radius:10px;
+  background:rgba(179,106,162,0.05);border:1px solid var(--bdr);
+  cursor:pointer;transition:all .2s;
+}
+.body-zone.felt{
+  border-color:var(--accentlt);background:rgba(179,106,162,0.13);
+  box-shadow:0 0 16px rgba(177,106,162,0.18);
+}
+.body-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--accentlt);background:transparent;transition:all .2s;flex-shrink:0}
+.body-zone.felt .body-dot{background:var(--accentlt)}
+.body-label{font-size:13px;color:var(--txts)}
 
-/* ── MONEY BLOCKS CHECKBOXES ── */
-.block-item{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:10px;border:1px solid var(--bdr);background:rgba(207,174,220,0.03);margin-bottom:8px;cursor:pointer;transition:all .2s}
-.block-item.checked{border-color:var(--pink);background:rgba(250,156,224,0.08);box-shadow:0 0 14px rgba(250,156,224,0.12)}
-.block-check{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.block-item.checked .block-check{background:var(--pg);border-color:transparent}
-.block-check-mark{color:#fff;font-size:11px;font-weight:700;opacity:0;transition:opacity .15s}
-.block-item.checked .block-check-mark{opacity:1}
+/* ── BLOCKS ── */
+.block-item{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 15px;border-radius:10px;border:1px solid var(--bdr);
+  background:rgba(179,106,162,0.04);margin-bottom:8px;
+  cursor:pointer;transition:all .2s;
+}
+.block-item.checked{border-color:var(--accentlt);background:rgba(179,106,162,0.12);box-shadow:0 0 16px rgba(177,106,162,0.15)}
+.block-chk{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.block-item.checked .block-chk{background:linear-gradient(135deg,var(--accent),var(--darkm));border-color:transparent}
+.chk-mark{color:var(--moonprl);font-size:11px;font-weight:700;opacity:0;transition:opacity .15s}
+.block-item.checked .chk-mark{opacity:1}
 .block-text{font-size:13px;color:var(--txts)}
 
-/* ── RELEASE STATEMENT ── */
-.release-box{background:linear-gradient(135deg,rgba(225,77,168,0.08),rgba(207,174,220,0.06));border:1px solid rgba(225,77,168,0.25);border-radius:14px;padding:22px 20px;margin-top:16px}
-.release-line{font-size:13.5px;color:var(--txt);line-height:1.9;font-style:italic;padding-left:14px;border-left:2px solid var(--mag)}
-.burn-btn{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mag);background:rgba(225,77,168,0.1);border:1.5px solid rgba(225,77,168,0.4);border-radius:50px;padding:10px 22px;cursor:pointer;transition:all .2s}
-.burn-btn:hover{background:rgba(225,77,168,0.2);transform:translateY(-1px)}
-.burn-flash{animation:burnFlash .6s ease}
-@keyframes burnFlash{0%,100%{opacity:1}50%{opacity:0;transform:scale(1.05)}}
+/* ── RELEASE BOX ── */
+.release-box{
+  background:linear-gradient(135deg,rgba(115,57,96,0.12),rgba(179,106,162,0.07));
+  border:1px solid rgba(179,106,162,0.28);
+  border-radius:14px;padding:24px 20px;margin-top:16px;
+  position:relative;overflow:hidden;
+}
+.release-line{
+  font-size:14px;color:var(--txt);line-height:2;font-style:italic;
+  padding-left:16px;border-left:2px solid var(--accent);
+}
+.burn-btn{
+  margin-top:16px;display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;color:var(--accentlt);
+  background:rgba(115,57,96,0.15);border:1.5px solid rgba(179,106,162,0.4);
+  border-radius:50px;padding:11px 24px;cursor:pointer;transition:all .2s;
+  font-family:'Montserrat',sans-serif;
+}
+.burn-btn:hover{background:rgba(115,57,96,0.28);transform:translateY(-1px);color:var(--moonprl)}
+@keyframes burnFlash{0%,100%{opacity:1}50%{opacity:0;transform:scale(1.04)}}
 
 /* ── AFFIRMATIONS ── */
-.aff-set{margin-bottom:20px}
-.aff-set-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.aff-item{padding:13px 16px;border-radius:10px;border:1px solid var(--bdr);background:rgba(207,174,220,0.03);margin-bottom:8px;cursor:pointer;transition:all .2s;font-size:13.5px;color:var(--txts);line-height:1.5;display:flex;align-items:center;gap:12px}
-.aff-item:hover{border-color:var(--lav);background:rgba(207,174,220,0.07)}
-.aff-item.picked{border-color:var(--mag);background:rgba(225,77,168,0.1);color:var(--txt);box-shadow:0 0 16px rgba(225,77,168,0.15)}
-.aff-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--lav);flex-shrink:0;transition:all .2s}
-.aff-item.picked .aff-dot{background:var(--mag);border-color:var(--mag)}
-.pick-counter{font-size:11px;font-weight:600;color:var(--lav);margin-bottom:14px}
-.pick-counter span{color:var(--mag);font-weight:700}
-.today-card{background:linear-gradient(135deg,rgba(225,77,168,0.1),rgba(207,174,220,0.06));border:1px solid rgba(225,77,168,0.3);border-radius:12px;padding:18px;margin-top:6px;min-height:64px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--txt);line-height:1.75;text-align:center}
+.aff-set-label{
+  font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--detail);margin-bottom:12px;
+}
+.aff-item{
+  padding:13px 16px;border-radius:10px;border:1px solid var(--bdr);
+  background:rgba(179,106,162,0.04);margin-bottom:8px;
+  cursor:pointer;transition:all .2s;
+  font-size:13.5px;color:var(--txts);line-height:1.5;
+  display:flex;align-items:center;gap:12px;
+}
+.aff-item:hover{border-color:var(--accentlt);background:rgba(179,106,162,0.09)}
+.aff-item.picked{border-color:var(--accent);background:rgba(115,57,96,0.16);color:var(--txt);box-shadow:0 0 18px rgba(115,57,96,0.2)}
+.aff-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--accentlt);flex-shrink:0;transition:all .2s}
+.aff-item.picked .aff-dot{background:var(--accent);border-color:var(--accent)}
+.pick-counter{font-size:11px;font-weight:600;color:var(--orchid);margin-bottom:14px}
+.pick-counter span{color:var(--accentlt);font-weight:700}
+.today-card{
+  background:linear-gradient(135deg,rgba(115,57,96,0.14),rgba(179,106,162,0.07));
+  border:1px solid rgba(179,106,162,0.3);border-radius:12px;
+  padding:20px;margin-top:6px;min-height:72px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--txt);line-height:1.75;text-align:center;
+  position:relative;overflow:hidden;
+}
 
-/* ── RITUAL CALENDAR ── */
-.cal-month-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lav);margin:22px 0 10px;padding-left:4px}
-.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
-.cal-event{padding:14px 16px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);transition:all .2s;cursor:default}
-.cal-event:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shh)}
-.cal-event-date{font-size:10px;font-weight:700;color:var(--mag);letter-spacing:.8px;margin-bottom:4px}
-.cal-event-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
-.cal-event-desc{font-size:11px;color:var(--txtm);line-height:1.5}
-.cal-event.moon-new{border-left:3px solid #7B68EE}
-.cal-event.moon-full{border-left:3px solid #CFAEDC}
-.cal-event.eclipse{border-left:3px solid #FA9CE0;background:rgba(250,156,224,0.06)}
-.cal-event.portal{border-left:3px solid #E14DA8;background:rgba(225,77,168,0.07)}
-.cal-event.power{border-left:3px solid #FFD700;background:rgba(255,215,0,0.04)}
-.cal-event.solstice{border-left:3px solid #8effd5;background:rgba(142,255,213,0.04)}
+/* ── CALENDAR ── */
 .cal-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
 .leg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--txtm)}
 .leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cal-month-label{
+  font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accentlt);margin:22px 0 10px;padding-left:4px;
+}
+.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
+.cal-event{
+  padding:14px 16px;border-radius:12px;border:1px solid var(--bdr);
+  background:var(--card);backdrop-filter:blur(10px);
+  transition:all .2s;cursor:default;position:relative;overflow:hidden;
+}
+.cal-event:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--shh)}
+.cal-event-date{font-size:10px;font-weight:700;color:var(--accentlt);letter-spacing:.8px;margin-bottom:4px}
+.cal-event-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
+.cal-event-desc{font-size:11px;color:var(--txtm);line-height:1.5}
+.cal-event.moon-new{border-left:3px solid #7B68EE}
+.cal-event.moon-full{border-left:3px solid var(--orchid)}
+.cal-event.eclipse{border-left:3px solid var(--detail);background:rgba(196,120,154,0.07)}
+.cal-event.portal{border-left:3px solid var(--accent);background:rgba(115,57,96,0.1)}
+.cal-event.power{border-left:3px solid #C9A84C;background:rgba(201,168,76,0.05)}
+.cal-event.solstice{border-left:3px solid var(--accentlt);background:rgba(177,106,162,0.07)}
 
-/* ── VIDEO SLOT ── */
-.video-slot{background:rgba(207,174,220,0.04);border:1px dashed rgba(207,174,220,0.25);border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:14px}
-.video-icon{font-size:36px;margin-bottom:12px}
-.video-slot-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--lav);margin-bottom:8px}
+/* ── VIDEO ── */
+.video-slot{
+  background:rgba(179,106,162,0.05);border:1px dashed rgba(179,106,162,0.28);
+  border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:14px;
+}
+.video-slot-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--accentlt);margin-bottom:8px}
 .video-slot-desc{font-size:12px;color:var(--txtm);line-height:1.65}
-.video-url-input{margin-top:14px}
 .video-embed{width:100%;aspect-ratio:16/9;border-radius:12px;border:none;display:none;margin-bottom:14px}
-.video-load-btn{font-size:11px;font-weight:700;color:#fff;background:var(--pg);border:none;border-radius:50px;padding:9px 22px;cursor:pointer;margin-top:10px;transition:all .2s}
-.video-load-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.vid-load-btn{
+  font-size:11px;font-weight:700;color:var(--moonprl);
+  background:linear-gradient(135deg,var(--accent),var(--darkm));
+  border:none;border-radius:50px;padding:10px 22px;cursor:pointer;
+  margin-top:10px;transition:all .2s;font-family:'Montserrat',sans-serif;
+}
+.vid-load-btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+
+/* ── STREAK ── */
+.streak-day{
+  padding:10px 4px;border-radius:10px;border:1px solid var(--bdr);
+  background:rgba(179,106,162,0.04);text-align:center;cursor:pointer;
+  transition:all .2s;font-size:10px;color:var(--txtm);font-weight:600;
+}
+.streak-day.done{background:rgba(115,57,96,0.2);border-color:var(--accentlt);color:var(--accentlt)}
 
 /* ── EMBODIMENT ── */
-.breath-box{background:linear-gradient(135deg,rgba(207,174,220,0.07),rgba(225,77,168,0.05));border:1px solid rgba(207,174,220,0.2);border-radius:14px;padding:24px;margin:14px 0;text-align:center}
-.breath-prompt{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--txt);line-height:1.6;margin-bottom:16px}
-.breath-btn{font-size:11px;font-weight:700;color:#fff;background:var(--pg);border:none;border-radius:50px;padding:10px 24px;cursor:pointer;transition:all .2s;display:inline-block}
-.breath-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
-.affirmation-speak{font-size:14px;color:var(--txt);line-height:2;margin:14px 0;padding:16px 20px;background:rgba(207,174,220,0.04);border-radius:10px;border-left:2px solid var(--lav)}
+.breath-box{
+  background:linear-gradient(135deg,rgba(179,106,162,0.09),rgba(115,57,96,0.07));
+  border:1px solid rgba(179,106,162,0.22);border-radius:14px;
+  padding:26px 24px;margin:14px 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.breath-prompt{
+  font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;
+  color:var(--txt);line-height:1.65;margin-bottom:18px;
+}
+.breath-btn{
+  font-size:11px;font-weight:700;color:var(--moonprl);
+  background:linear-gradient(135deg,var(--accent),var(--darkm));
+  border:none;border-radius:50px;padding:11px 26px;
+  cursor:pointer;transition:all .2s;display:inline-block;font-family:'Montserrat',sans-serif;
+}
+.breath-btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.aff-speak{
+  font-size:14px;color:var(--txt);line-height:2.1;margin:14px 0;
+  padding:16px 20px;
+  background:rgba(179,106,162,0.06);border-radius:10px;
+  border-left:2px solid var(--accentlt);text-align:left;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+}
 
 /* ── PULLQUOTE ── */
-.pullquote{position:relative;padding:24px 22px 24px 60px;background:linear-gradient(135deg,var(--dark),var(--darkm));border-radius:14px;border:1px solid rgba(225,77,168,0.25);margin:16px 0}
-.pullquote::before{content:'"';position:absolute;top:4px;left:14px;font-family:'Cormorant Garamond',serif;font-size:64px;line-height:1;color:var(--mag);opacity:.45;pointer-events:none}
-.pullquote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(15px,2.2vw,18px);color:var(--txt);line-height:1.55;position:relative;z-index:1}
+.pullquote{
+  position:relative;padding:26px 24px 26px 62px;
+  background:linear-gradient(135deg,var(--dark),var(--darkm));
+  border-radius:14px;border:1px solid rgba(115,57,96,0.3);
+  margin:16px 0;overflow:hidden;
+}
+.pullquote::before{
+  content:'"';position:absolute;top:2px;left:14px;
+  font-family:'Cormorant Garamond',serif;font-size:72px;line-height:1;
+  color:var(--accent);opacity:.4;pointer-events:none;
+}
+.pullquote-text{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:clamp(15px,2.2vw,18px);color:var(--txt);line-height:1.6;
+  position:relative;z-index:1;
+}
 
-/* ── BULLET LIST ── */
+/* ── BULLETS ── */
 .bullet-list{list-style:none;padding:0}
-.bullet-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:13px;color:var(--txts);line-height:1.6}
-.bullet-list li::before{content:'✦';color:var(--lav);font-size:11px;flex-shrink:0;margin-top:2px}
-
-/* ── SAVE BAR ── */
-.save-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(8,5,15,0.97);backdrop-filter:blur(12px);border-top:1px solid var(--bdr);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:200}
-.save-status{font-size:10px;color:var(--txtq);font-weight:500}
-.save-status.saved{color:var(--lav)}
-.nav-btns-bottom{display:flex;gap:8px}
-.nav-b{font-size:10px;font-weight:700;padding:8px 18px;border-radius:50px;border:1.5px solid var(--bdr);background:transparent;color:var(--txtm);cursor:pointer;transition:all .2s}
-.nav-b.primary{background:var(--pg);border-color:transparent;color:#fff}
-.nav-b:hover{border-color:var(--lav);color:var(--lav)}
-.nav-b.primary:hover{filter:brightness(1.1);color:#fff}
+.bullet-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:13px;color:var(--txts);line-height:1.65}
+.bullet-list li::before{content:'✦';color:var(--accentlt);font-size:10px;flex-shrink:0;margin-top:3px}
 
 /* ── DIVIDER ── */
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);margin:20px 0}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);margin:18px 0}
+
+/* ── SAVE BAR ── */
+.save-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(13,6,16,0.96);backdrop-filter:blur(16px);
+  border-top:1px solid var(--bdr);padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;z-index:200;
+}
+.save-status{font-size:10px;color:var(--txtq);font-weight:500}
+.save-status.saved{color:var(--accentlt)}
+.nav-btns-bot{display:flex;gap:8px}
+.nav-b{
+  font-size:10px;font-weight:700;padding:9px 20px;border-radius:50px;
+  border:1.5px solid var(--bdr);background:transparent;color:var(--txtm);
+  cursor:pointer;transition:all .2s;font-family:'Montserrat',sans-serif;
+}
+.nav-b.primary{background:linear-gradient(135deg,var(--accent),var(--darkm));border-color:transparent;color:var(--moonprl)}
+.nav-b:hover:not(.primary){border-color:var(--accentlt);color:var(--accentlt)}
+.nav-b.primary:hover{filter:brightness(1.12);color:var(--moonprl)}
 
 /* ── FOOTER ── */
-.footer{position:relative;overflow:hidden;background:var(--dark);padding:44px 24px;text-align:center}
+.footer{
+  position:relative;overflow:hidden;
+  padding:52px 24px 56px;text-align:center;
+}
+.footer::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(13,6,24,0.7),rgba(70,29,52,0.6));
+}
 .footer-inner{position:relative;z-index:2}
-.footer-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--pink);letter-spacing:1.5px;margin-bottom:10px}
-.footer-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--txt);line-height:1.3}
-.footer-title em{color:var(--pink);font-style:italic}
-.footer-brand{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lav);margin-top:18px}
+.footer-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--detail);letter-spacing:1.5px;margin-bottom:12px}
+.footer-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--txt);line-height:1.3}
+.footer-title em{color:var(--accentlt);font-style:italic}
+.footer-brand{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--txtf);margin-top:20px}
 
 /* RESPONSIVE */
 @media(max-width:600px){
   .cal-grid{grid-template-columns:1fr}
-  .body-check-grid{grid-template-columns:1fr}
+  .body-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
+<div class="nebula-bg"></div>
+<div class="nebula-overlay"></div>
+
+<div class="page-wrap">
+
 <!-- HERO -->
 <div class="hero">
-  <canvas id="heroCanvas"></canvas>
+  <div class="stars"></div>
+  <div class="glow"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow">The Badass Alchemy Method</div>
+    <div class="hero-script">The Badass Alchemy Method</div>
+    <div class="hero-eyebrow">Baddie Society</div>
     <h1 class="hero-title">Clear Your Money Blocks<br><em>The Art of Receiving</em></h1>
     <p class="hero-sub">How to bend your reality and manifest more — starting with your nervous system.</p>
-    <div class="hero-accent">receive. trust. become.</div>
+    <div class="hero-accent">Detox · Activate · Open · Build ✦</div>
   </div>
 </div>
 
-<!-- PROGRESS BAR -->
+<!-- PROGRESS -->
 <div class="prog-bar">
   <span class="prog-label">Progress</span>
   <div class="prog-track"><div class="prog-fill" id="progFill" style="width:16.6%"></div></div>
-  <span class="prog-count" id="progCount">1/6</span>
+  <span class="prog-count" id="progCount">1 / 6</span>
 </div>
 
 <!-- NAV -->
@@ -210,48 +428,40 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 
 <div class="content">
 
-<!-- ─── SECTION 01 ─── -->
+<!-- ═══ 01 ═══ -->
 <div class="section active" id="sec0">
-  <div class="section-num">01</div>
-  <h2 class="section-title">Your Money Story <em>The Audit</em></h2>
-  <p class="section-lead">Money blocks are not mindset issues. They are safety issues. Most women don't repel money — their nervous system doesn't feel safe holding it. Let's find where yours started.</p>
+  <div class="sec-num">01</div>
+  <h2 class="sec-title">Your Money Story <em>The Audit</em></h2>
+  <p class="sec-lead">Money blocks are not mindset issues. They are safety issues. Most women don't repel money — their nervous system doesn't feel safe holding it. Let's find where yours started.</p>
 
-  <div class="card">
-    <div class="eyebrow">Journal Prompts</div>
-    <p style="font-size:12px;color:var(--txtm);margin-bottom:14px;line-height:1.6">Take your time. Write whatever comes up — there are no right answers.</p>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div>
-        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ What emotions come up when I receive unexpected money?</div>
-        <textarea id="j1" rows="3" placeholder="Write freely here..."></textarea>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ Do I feel safer spending money or holding money?</div>
-        <textarea id="j2" rows="3" placeholder="Write freely here..."></textarea>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ Who taught me what "enough" looks like?</div>
-        <textarea id="j3" rows="3" placeholder="Write freely here..."></textarea>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">✦ What am I afraid will change if I become financially free?</div>
-        <textarea id="j4" rows="3" placeholder="Write freely here..."></textarea>
+  <div class="card card-stars">
+    <div class="stars"></div>
+    <div class="glow"></div>
+    <div style="position:relative;z-index:1">
+      <div class="eyebrow">Journal Prompts</div>
+      <p style="font-size:12px;color:var(--txtm);margin-bottom:16px;line-height:1.65">Take your time. Write whatever comes up — there are no right answers.</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div><div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">✦ What emotions come up when I receive unexpected money?</div><textarea id="j1" rows="3" placeholder="Write freely here..."></textarea></div>
+        <div><div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">✦ Do I feel safer spending money or holding money?</div><textarea id="j2" rows="3" placeholder="Write freely here..."></textarea></div>
+        <div><div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">✦ Who taught me what "enough" looks like?</div><textarea id="j3" rows="3" placeholder="Write freely here..."></textarea></div>
+        <div><div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">✦ What am I afraid will change if I become financially free?</div><textarea id="j4" rows="3" placeholder="Write freely here..."></textarea></div>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="eyebrow eyebrow-pink">Body Check</div>
+    <div class="eyebrow eyebrow-detail">Body Check</div>
     <p style="font-size:13px;color:var(--txts);margin-bottom:14px;line-height:1.65">When you think about having more money — where do you feel tension? Tap all that apply.</p>
-    <div class="body-check-grid" id="bodyCheck">
-      <div class="body-zone" data-zone="chest"><div class="body-zone-dot"></div><span class="body-zone-label">🫀 Chest</span></div>
-      <div class="body-zone" data-zone="throat"><div class="body-zone-dot"></div><span class="body-zone-label">🗣 Throat</span></div>
-      <div class="body-zone" data-zone="stomach"><div class="body-zone-dot"></div><span class="body-zone-label">🌀 Stomach</span></div>
-      <div class="body-zone" data-zone="jaw"><div class="body-zone-dot"></div><span class="body-zone-label">😤 Jaw</span></div>
-      <div class="body-zone" data-zone="shoulders"><div class="body-zone-dot"></div><span class="body-zone-label">💪 Shoulders</span></div>
-      <div class="body-zone" data-zone="none"><div class="body-zone-dot"></div><span class="body-zone-label">✨ None / Open</span></div>
+    <div class="body-grid" id="bodyCheck">
+      <div class="body-zone" data-zone="chest"><div class="body-dot"></div><span class="body-label">🫀 Chest</span></div>
+      <div class="body-zone" data-zone="throat"><div class="body-dot"></div><span class="body-label">🗣 Throat</span></div>
+      <div class="body-zone" data-zone="stomach"><div class="body-dot"></div><span class="body-label">🌀 Stomach</span></div>
+      <div class="body-zone" data-zone="jaw"><div class="body-dot"></div><span class="body-label">😤 Jaw</span></div>
+      <div class="body-zone" data-zone="shoulders"><div class="body-dot"></div><span class="body-label">💪 Shoulders</span></div>
+      <div class="body-zone" data-zone="none"><div class="body-dot"></div><span class="body-label">✨ None / Open</span></div>
     </div>
     <div style="margin-top:14px">
-      <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">Notes on what you noticed:</div>
+      <div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Notes on what you noticed:</div>
       <textarea id="bodyNotes" rows="2" placeholder="E.g. 'I noticed tightness in my chest and a held breath...'"></textarea>
     </div>
   </div>
@@ -261,79 +471,91 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   </div>
 </div>
 
-<!-- ─── SECTION 02 ─── -->
+<!-- ═══ 02 ═══ -->
 <div class="section" id="sec1">
-  <div class="section-num">02</div>
-  <h2 class="section-title">Common Money Blocks</h2>
-  <p class="section-lead">I associate money with stress or responsibility. Which of these applies to you right now? Select all that resonate.</p>
+  <div class="sec-num">02</div>
+  <h2 class="sec-title">Common Money <em>Blocks</em></h2>
+  <p class="sec-lead">I associate money with stress or responsibility. Which of these applies to you right now? Select all that resonate.</p>
 
   <div class="card" id="blocksList">
-    <div class="eyebrow eyebrow-lav">Select Your Blocks</div>
-    <div class="block-item" data-block="0"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I feel guilt when I want more</span></div>
-    <div class="block-item" data-block="1"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I believe wanting wealth makes me "selfish"</span></div>
-    <div class="block-item" data-block="2"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I out-earn people I love and it feels unsafe</span></div>
-    <div class="block-item" data-block="3"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I sabotage when things start working</span></div>
-    <div class="block-item" data-block="4"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I don't trust money to stay</span></div>
-    <div class="block-item" data-block="5"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I associate money with stress or responsibility</span></div>
-    <div class="block-item" data-block="6"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I rush to spend money before it disappears</span></div>
-    <div class="block-item" data-block="7"><div class="block-check"><span class="block-check-mark">✓</span></div><span class="block-text">I undercharge because I fear being rejected</span></div>
+    <div class="eyebrow">Select Your Blocks</div>
+    <div class="block-item" data-block="0"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I feel guilt when I want more</span></div>
+    <div class="block-item" data-block="1"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I believe wanting wealth makes me "selfish"</span></div>
+    <div class="block-item" data-block="2"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I out-earn people I love and it feels unsafe</span></div>
+    <div class="block-item" data-block="3"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I sabotage when things start working</span></div>
+    <div class="block-item" data-block="4"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I don't trust money to stay</span></div>
+    <div class="block-item" data-block="5"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I associate money with stress or responsibility</span></div>
+    <div class="block-item" data-block="6"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I rush to spend money before it disappears</span></div>
+    <div class="block-item" data-block="7"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I undercharge because I fear being rejected</span></div>
   </div>
 
-  <div class="card" style="margin-bottom:14px">
-    <div class="eyebrow eyebrow-pink">Where Were These Inherited?</div>
+  <div class="card">
+    <div class="eyebrow eyebrow-orchid">Where Were These Inherited?</div>
     <p style="font-size:13px;color:var(--txts);margin-bottom:12px;line-height:1.65">Trace the root. Most money blocks were handed down — not yours to keep.</p>
-    <textarea id="inheritedNotes" rows="3" placeholder="Who taught you this about money? A parent, experience, culture? Write it out..."></textarea>
+    <textarea id="inheritedNotes" rows="3" placeholder="Who taught you this about money? A parent, experience, culture?..."></textarea>
   </div>
 
-  <!-- VIDEO SLOT -->
-  <div class="card" style="margin-bottom:14px">
-    <div class="eyebrow">Video · Money Belief System</div>
-    <div id="videoSlot1" class="video-slot">
-      <div class="video-icon">🎬</div>
-      <div class="video-slot-title">Money Belief System</div>
-      <div class="video-slot-desc">Add your YouTube URL below to embed your video here.</div>
-      <div class="video-url-input">
-        <input type="text" id="vidUrl1" placeholder="Paste YouTube URL here, e.g. https://www.youtube.com/watch?v=..." />
-        <button class="video-load-btn" onclick="loadVideo('vidUrl1','vidEmbed1','videoSlot1')">Load Video</button>
+  <!-- VIDEO -->
+  <div class="card card-stars">
+    <div class="stars"></div>
+    <div style="position:relative;z-index:1">
+      <div class="eyebrow">Video · Money Belief System</div>
+      <div id="videoSlot1" class="video-slot">
+        <div style="font-size:34px;margin-bottom:12px">🎬</div>
+        <div class="video-slot-title">Money Belief System</div>
+        <div class="video-slot-desc">Add your YouTube URL below to embed your video here.</div>
+        <div style="margin-top:14px">
+          <input type="text" id="vidUrl1" placeholder="Paste YouTube URL..." />
+          <button class="vid-load-btn" onclick="loadVideo('vidUrl1','vidEmbed1','videoSlot1')">Load Video</button>
+        </div>
       </div>
+      <iframe id="vidEmbed1" class="video-embed" allowfullscreen></iframe>
     </div>
-    <iframe id="vidEmbed1" class="video-embed" allowfullscreen></iframe>
   </div>
 
   <div class="release-box">
-    <div class="eyebrow" style="margin-bottom:12px">Section 3 · The Clearing Exercise</div>
-    <div style="font-size:11px;font-weight:600;color:var(--mag);margin-bottom:10px;letter-spacing:1px;text-transform:uppercase">The Release Statement — Write + Speak</div>
-    <div class="release-line">
-      "I release the belief that money is unsafe.<br>
-      I release the belief that I must struggle to be worthy.<br>
-      I release the belief that ease makes me lazy or ungrateful."
-    </div>
-    <div style="margin-top:16px;font-size:13px;font-style:italic;color:var(--txt);line-height:1.65">
-      <strong style="color:var(--lav)">Then:</strong> "I choose to build a relationship with money based on trust, neutrality, and self-respect."
-    </div>
-    <div style="margin-top:16px">
-      <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">Write your own release statement:</div>
-      <textarea id="releaseWrite" rows="3" placeholder="I release the belief that..."></textarea>
-    </div>
-    <button class="burn-btn" id="burnBtn" onclick="burnIt()">🔥 Write It + Release It — POOF</button>
-    <div id="burnMsg" style="display:none;margin-top:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--mint);text-align:center;color:var(--lav)">
-      ✨ Released. You can move into a new realm of abundance. ✨
+    <div class="stars"></div>
+    <div style="position:relative;z-index:1">
+      <div class="eyebrow" style="margin-bottom:12px">Section 3 · The Clearing Exercise</div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--detail);margin-bottom:12px">The Release Statement — Write + Speak</div>
+      <div class="release-line">
+        "I release the belief that money is unsafe.<br>
+        I release the belief that I must struggle to be worthy.<br>
+        I release the belief that ease makes me lazy or ungrateful."
+      </div>
+      <div style="margin-top:16px;font-size:13px;font-style:italic;color:var(--txt);line-height:1.7">
+        <strong style="color:var(--accentlt)">Then:</strong> "I choose to build a relationship with money based on trust, neutrality, and self-respect."
+      </div>
+      <div style="margin-top:16px">
+        <div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Write your own release statement:</div>
+        <textarea id="releaseWrite" rows="3" placeholder="I release the belief that..."></textarea>
+      </div>
+      <button class="burn-btn" id="burnBtn" onclick="burnIt()">🔥 Write It + Release It — POOF</button>
+      <div id="burnMsg" style="display:none;margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accentlt);text-align:center">
+        ✦ Released. You can now move into a new realm of abundance. ✦
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ─── SECTION 03 ─── -->
+<!-- ═══ 03 ═══ -->
 <div class="section" id="sec2">
-  <div class="section-num">03</div>
-  <h2 class="section-title">Daily Money <em>Affirmations</em></h2>
-  <p class="section-lead">Do this along with the Magnificent Money Manifestation Track. Pick 3 per day. Consistency over volume.</p>
+  <div class="sec-num">03</div>
+  <h2 class="sec-title">Daily Money <em>Affirmations</em></h2>
+  <p class="sec-lead">Do this along with the Magnificent Money Manifestation Track. Pick 3 per day. Consistency over volume.</p>
 
-  <div class="card">
-    <div class="pick-counter">You've picked <span id="pickCount">0</span>/3 for today. <span id="pickDone" style="color:var(--lav);display:none">✦ Perfect.</span></div>
-    <div id="todayCard" class="today-card" style="font-family:'Montserrat',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>
+  <div class="card card-stars">
+    <div class="stars"></div>
+    <div style="position:relative;z-index:1">
+      <div class="pick-counter">You've picked <span id="pickCount">0</span>/3 for today. <span id="pickDone" style="color:var(--accentlt);display:none">✦ Perfect, Queen.</span></div>
+      <div id="todayCard" class="today-card">
+        <div class="stars"></div>
+        <div style="position:relative;z-index:1;font-family:'Montserrat',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>
+      </div>
+    </div>
   </div>
 
-  <div class="aff-set">
+  <div style="margin-bottom:20px">
     <div class="aff-set-label">Daily Core (Morning or Night)</div>
     <div id="affCore">
       <div class="aff-item" data-aff="Money is safe with me."><div class="aff-dot"></div>Money is safe with me.</div>
@@ -346,8 +568,8 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
     </div>
   </div>
 
-  <div class="aff-set">
-    <div class="aff-set-label" style="color:var(--lav)">Identity Level (Read Slowly)</div>
+  <div>
+    <div class="aff-set-label" style="color:var(--orchid)">Identity Level (Read Slowly)</div>
     <div id="affIdentity">
       <div class="aff-item" data-aff="I am a woman who holds wealth with grace."><div class="aff-dot"></div>I am a woman who holds wealth with grace.</div>
       <div class="aff-item" data-aff="My nervous system is calibrated for abundance."><div class="aff-dot"></div>My nervous system is calibrated for abundance.</div>
@@ -362,34 +584,33 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   </div>
 </div>
 
-<!-- ─── SECTION 04 ─── -->
+<!-- ═══ 04 ═══ -->
 <div class="section" id="sec3">
-  <div class="section-num">04</div>
-  <h2 class="section-title">Ritual Power Days <em>2026</em></h2>
-  <p class="section-lead">You don't need every cosmic event — just the ones that matter. Practical, not woo woo chaos.</p>
+  <div class="sec-num">04</div>
+  <h2 class="sec-title">Ritual Power Days <em>2026</em></h2>
+  <p class="sec-lead">You don't need every cosmic event — just the ones that matter. Practical, not woo woo chaos.</p>
 
   <div class="cal-legend">
     <div class="leg-item"><div class="leg-dot" style="background:#7B68EE"></div>New Moon</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#CFAEDC"></div>Full Moon</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#FA9CE0"></div>Eclipse</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#E14DA8"></div>Portal</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#FFD700"></div>Power Day</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#8effd5"></div>Solstice</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--orchid)"></div>Full Moon</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--detail)"></div>Eclipse</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--accent)"></div>Portal</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#C9A84C"></div>Power Day</div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--accentlt)"></div>Solstice</div>
   </div>
 
-  <!-- MONTHLY ANCHORS -->
-  <div class="card" style="margin-bottom:14px">
-    <div class="eyebrow eyebrow-lav">Monthly Anchors — Use Every Month</div>
+  <div class="card">
+    <div class="eyebrow">Monthly Anchors — Every Month</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
-      <div style="padding:16px;background:rgba(123,104,238,0.08);border:1px solid rgba(123,104,238,0.3);border-radius:12px;text-align:center">
-        <div style="font-size:20px;margin-bottom:6px">🌑</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt)">New Moons</div>
-        <div style="font-size:11px;color:var(--txtm);margin-top:4px;font-style:italic">Intention + money goals</div>
+      <div style="padding:18px;background:rgba(123,104,238,0.09);border:1px solid rgba(123,104,238,0.28);border-radius:12px;text-align:center">
+        <div style="font-size:22px;margin-bottom:7px">🌑</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--txt)">New Moons</div>
+        <div style="font-size:11px;color:var(--txtm);margin-top:5px;font-style:italic">Intention + money goals</div>
       </div>
-      <div style="padding:16px;background:rgba(207,174,220,0.07);border:1px solid rgba(207,174,220,0.25);border-radius:12px;text-align:center">
-        <div style="font-size:20px;margin-bottom:6px">🌕</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt)">Full Moons</div>
-        <div style="font-size:11px;color:var(--txtm);margin-top:4px;font-style:italic">Release + clearing scarcity</div>
+      <div style="padding:18px;background:rgba(198,182,205,0.08);border:1px solid rgba(198,182,205,0.22);border-radius:12px;text-align:center">
+        <div style="font-size:22px;margin-bottom:7px">🌕</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--txt)">Full Moons</div>
+        <div style="font-size:11px;color:var(--txtm);margin-top:5px;font-style:italic">Release + clearing scarcity</div>
       </div>
     </div>
   </div>
@@ -417,7 +638,7 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 
   <div class="cal-month-label">August</div>
   <div class="cal-grid">
-    <div class="cal-event portal" style="grid-column:1/-1"><div class="cal-event-date">🦁 AUG 8, 2026 (8/8)</div><div class="cal-event-name">Lion's Gate Portal</div><div class="cal-event-desc">Money + leadership + self-worth · Perfect for: charging more, claiming wealth without apology</div></div>
+    <div class="cal-event portal" style="grid-column:1/-1"><div class="cal-event-date">🦁 AUG 8, 2026 (8/8)</div><div class="cal-event-name">Lion's Gate Portal</div><div class="cal-event-desc">Money + leadership + self-worth · Charge more, claim wealth without apology</div></div>
   </div>
 
   <div class="cal-month-label">September</div>
@@ -429,7 +650,7 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 
   <div class="cal-month-label">November</div>
   <div class="cal-grid">
-    <div class="cal-event power"><div class="cal-event-date">💛 NOV 11, 2026</div><div class="cal-event-name">11/11 Portal</div><div class="cal-event-desc">Master number day · Alignment + amplification</div></div>
+    <div class="cal-event power"><div class="cal-event-date">💛 NOV 11, 2026</div><div class="cal-event-name">11/11 Portal</div><div class="cal-event-desc">Master number · Alignment + amplification</div></div>
   </div>
 
   <div class="cal-month-label">December</div>
@@ -438,50 +659,53 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   </div>
 
   <div class="card" style="margin-top:16px">
-    <div class="eyebrow eyebrow-pink">Every Month</div>
-    <ul class="bullet-list">
-      <li>Every <strong>8th of the month</strong> — money, authority, abundance (mark these in your calendar now)</li>
-      <li>Set intentions on New Moons <strong>lightly</strong></li>
-      <li>Release on Full Moons <strong>heavily</strong></li>
+    <div class="eyebrow eyebrow-detail">Every 8th of the Month</div>
+    <ul class="bullet-list" style="margin-bottom:14px">
+      <li>Money, authority, abundance — mark these in your calendar now</li>
+      <li>Set intentions on New Moons <strong style="color:var(--accentlt)">lightly</strong></li>
+      <li>Release on Full Moons <strong style="color:var(--accentlt)">heavily</strong></li>
       <li>These are non-negotiable ritual days</li>
     </ul>
     <div style="margin-top:12px">
-      <div style="font-size:11px;font-weight:600;color:var(--lav);margin-bottom:6px">Your notes for this month's ritual:</div>
+      <div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Your notes for this month's ritual:</div>
       <textarea id="ritualNotes" rows="2" placeholder="What are you setting intention on this cycle?"></textarea>
     </div>
   </div>
 </div>
 
-<!-- ─── SECTION 05 ─── -->
+<!-- ═══ 05 ═══ -->
 <div class="section" id="sec4">
-  <div class="section-num">05</div>
-  <h2 class="section-title">The Money Manifestation <em>Track</em></h2>
-  <p class="section-lead">Money Nervous System Recalibration — Private Audio Rituals. This meditation is designed to shift your subconscious relationship with money — not force manifestation, but make receiving feel safe.</p>
+  <div class="sec-num">05</div>
+  <h2 class="sec-title">The Money Manifestation <em>Track</em></h2>
+  <p class="sec-lead">Money Nervous System Recalibration — Private Audio Rituals. This meditation is designed to shift your subconscious relationship with money — not force manifestation, but make receiving feel safe.</p>
 
-  <div class="card" style="margin-bottom:14px">
-    <div class="eyebrow">Magnificent Money Manifestation</div>
-    <div id="videoSlot2" class="video-slot">
-      <div class="video-icon">🎶</div>
-      <div class="video-slot-title">Magnificent Money Manifestation</div>
-      <div class="video-slot-desc">Paste your YouTube link below. Listen 3x a day for a week straight.</div>
-      <div class="video-url-input">
-        <input type="text" id="vidUrl2" placeholder="Paste YouTube URL here..." />
-        <button class="video-load-btn" onclick="loadVideo('vidUrl2','vidEmbed2','videoSlot2')">Load Video</button>
+  <div class="card card-stars">
+    <div class="stars"></div>
+    <div class="glow"></div>
+    <div style="position:relative;z-index:1">
+      <div class="eyebrow">Magnificent Money Manifestation</div>
+      <div id="videoSlot2" class="video-slot">
+        <div style="font-size:34px;margin-bottom:12px">🎶</div>
+        <div class="video-slot-title">Magnificent Money Manifestation</div>
+        <div class="video-slot-desc">Listen 3x a day for a week straight.</div>
+        <div style="margin-top:14px">
+          <input type="text" id="vidUrl2" placeholder="Paste YouTube URL..." />
+          <button class="vid-load-btn" onclick="loadVideo('vidUrl2','vidEmbed2','videoSlot2')">Load Video</button>
+        </div>
       </div>
+      <iframe id="vidEmbed2" class="video-embed" allowfullscreen></iframe>
     </div>
-    <iframe id="vidEmbed2" class="video-embed" allowfullscreen></iframe>
   </div>
 
   <div class="card">
-    <div class="eyebrow eyebrow-lav">Instructions</div>
+    <div class="eyebrow eyebrow-orchid">Instructions</div>
     <ul class="bullet-list" style="margin-bottom:14px">
       <li>Listen with headphones when possible</li>
       <li>Do not multitask during the first listen</li>
     </ul>
-    <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--mag);margin-bottom:10px">Use during:</div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--detail);margin-bottom:10px">Use during:</div>
     <ul class="bullet-list">
-      <li>New Moons</li>
-      <li>Full Moons</li>
+      <li>New Moons &amp; Full Moons</li>
       <li>Money journaling</li>
       <li>Before sleep</li>
       <li>When you wake up every day</li>
@@ -493,20 +717,19 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   </div>
 
   <div class="card">
-    <div class="eyebrow eyebrow-pink">Track Your Listening Streak</div>
+    <div class="eyebrow eyebrow-detail">Track Your Listening Streak</div>
     <p style="font-size:12px;color:var(--txtm);margin-bottom:14px;line-height:1.6">3x a day for a week straight. Tap each day you complete it.</p>
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px" id="streakGrid">
-    </div>
-    <div style="margin-top:12px;font-size:11px;color:var(--txtm)">Notes on what you notice after each session:</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px" id="streakGrid"></div>
+    <div style="margin-top:14px;font-size:11px;color:var(--txtm)">Notes on what you notice after each session:</div>
     <textarea id="meditNotes" rows="2" placeholder="Shifts, sensations, insights..." style="margin-top:8px"></textarea>
   </div>
 </div>
 
-<!-- ─── SECTION 06 ─── -->
+<!-- ═══ 06 ═══ -->
 <div class="section" id="sec5">
-  <div class="section-num">06</div>
-  <h2 class="section-title">Integration: Becoming the Woman <em>Who Holds Wealth</em></h2>
-  <p class="section-lead">Clearing money blocks is powerful. Rewriting your relationship with money is necessary. But abundance doesn't stabilize until your identity catches up.</p>
+  <div class="sec-num">06</div>
+  <h2 class="sec-title">Integration: Becoming the Woman <em>Who Holds Wealth</em></h2>
+  <p class="sec-lead">Clearing money blocks is powerful. Rewriting your relationship with money is necessary. But abundance doesn't stabilize until your identity catches up.</p>
 
   <div class="card">
     <div class="eyebrow">Wealth Is Not a Moment. It's a Capacity.</div>
@@ -517,8 +740,8 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
       <li>they overspend or undercharge</li>
       <li>they shrink or self-sabotage</li>
     </ul>
-    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:10px">Not because they're irresponsible — but because their nervous system hasn't stabilized at that level yet.</p>
-    <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:17px;color:var(--lav);margin-bottom:8px">Wealth requires capacity, not just desire. Capacity to:</div>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:12px">Not because they're irresponsible — but because their nervous system hasn't stabilized at that level yet.</p>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18px;color:var(--accentlt);margin-bottom:10px">Wealth requires capacity, not just desire.</div>
     <ul class="bullet-list">
       <li>make calm decisions</li>
       <li>delay reaction</li>
@@ -531,43 +754,47 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
     <div class="pullquote-text">Money doesn't stay with the woman who wants it. It stays with the woman who feels safe, steady, and self-led while holding it.</div>
   </div>
 
-  <!-- GUIDED EMBODIMENT -->
-  <div class="card">
-    <div class="eyebrow eyebrow-pink">Guided Embodiment Practice</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--txt);margin-bottom:14px">Stabilizing Your Next Level</div>
+  <!-- EMBODIMENT -->
+  <div class="card card-stars">
+    <div class="stars"></div>
+    <div class="glow"></div>
+    <div style="position:relative;z-index:1">
+      <div class="eyebrow eyebrow-detail">Guided Embodiment Practice</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--txt);margin-bottom:16px">Stabilizing Your Next Level</div>
 
-    <div id="breathStep0" class="breath-box">
-      <div class="breath-prompt">Take a breath.<br>Place one hand on your chest.</div>
-      <button class="breath-btn" onclick="nextBreath(1)">I'm here ✦</button>
-    </div>
-    <div id="breathStep1" class="breath-box" style="display:none">
-      <div class="breath-prompt">Ask yourself:<br><span style="font-size:14px;color:var(--lav)">How does my body feel when I imagine holding significantly more money?<br><br>Where do I tense?<br>What part of me feels alert or cautious?</span></div>
-      <textarea style="text-align:left;margin:14px 0 0" id="embodimentReflect" rows="3" placeholder="Write what comes up..."></textarea>
-      <button class="breath-btn" onclick="nextBreath(2)" style="margin-top:12px">Continue ✦</button>
-    </div>
-    <div id="breathStep2" class="breath-box" style="display:none">
-      <div class="breath-prompt" style="margin-bottom:8px">Now repeat slowly, out loud if you can:</div>
-      <div class="affirmation-speak">
-        I am safe holding more.<br>
-        I trust myself at higher levels.<br>
-        I can lead myself through expansion.<br>
-        Wealth does not destabilize me.<br>
-        It supports me.
+      <div id="breathStep0" class="breath-box">
+        <div class="breath-prompt">Take a breath.<br>Place one hand on your chest.</div>
+        <button class="breath-btn" onclick="nextBreath(1)">I'm here ✦</button>
       </div>
-      <button class="breath-btn" onclick="nextBreath(3)">I've spoken these ✦</button>
-    </div>
-    <div id="breathStep3" class="breath-box" style="display:none;background:linear-gradient(135deg,rgba(225,77,168,0.12),rgba(207,174,220,0.08))">
-      <div style="font-size:28px;margin-bottom:10px">✨</div>
-      <div class="breath-prompt" style="color:var(--pink)">Let your body settle before moving on.<br>This is how identity integrates.</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--lav);margin-top:10px">you are...</div>
-      <button class="breath-btn" onclick="nextBreath(0)" style="margin-top:14px;background:rgba(225,77,168,0.2);color:var(--lav);border:1.5px solid var(--lav)">Begin Again</button>
+      <div id="breathStep1" class="breath-box" style="display:none">
+        <div class="breath-prompt">Ask yourself:<br><span style="font-size:14px;color:var(--accentlt)">How does my body feel when I imagine holding significantly more money?<br><br>Where do I tense?<br>What part of me feels alert or cautious?</span></div>
+        <textarea id="embodimentReflect" rows="3" placeholder="Write what comes up..." style="text-align:left;margin:14px 0 0"></textarea>
+        <button class="breath-btn" onclick="nextBreath(2)" style="margin-top:12px">Continue ✦</button>
+      </div>
+      <div id="breathStep2" class="breath-box" style="display:none">
+        <div class="breath-prompt" style="margin-bottom:8px">Now repeat slowly, out loud if you can:</div>
+        <div class="aff-speak">
+          I am safe holding more.<br>
+          I trust myself at higher levels.<br>
+          I can lead myself through expansion.<br>
+          Wealth does not destabilize me.<br>
+          It supports me.
+        </div>
+        <button class="breath-btn" onclick="nextBreath(3)">I've spoken these ✦</button>
+      </div>
+      <div id="breathStep3" class="breath-box" style="display:none;background:linear-gradient(135deg,rgba(115,57,96,0.18),rgba(179,106,162,0.1))">
+        <div style="font-size:28px;margin-bottom:12px">✦</div>
+        <div class="breath-prompt" style="color:var(--accentlt)">Let your body settle before moving on.<br>This is how identity integrates.</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--orchid);margin-top:10px">you are...</div>
+        <button class="breath-btn" onclick="nextBreath(0)" style="margin-top:16px;background:rgba(115,57,96,0.25);color:var(--accentlt);border:1.5px solid var(--accent)">Begin Again</button>
+      </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="eyebrow eyebrow-lav">Wealth is Self-Leadership</div>
+    <div class="eyebrow eyebrow-orchid">Wealth is Self-Leadership</div>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:14px">At this stage, money is no longer the teacher. You are.</p>
-    <div style="font-size:13px;color:var(--lav);font-weight:600;margin-bottom:8px">You decide:</div>
+    <div style="font-size:13px;color:var(--accentlt);font-weight:600;margin-bottom:9px">You decide:</div>
     <ul class="bullet-list" style="margin-bottom:14px">
       <li>what feels aligned</li>
       <li>what is worth your energy</li>
@@ -575,13 +802,12 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
       <li>what you no longer tolerate</li>
     </ul>
     <div class="divider"></div>
-    <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:6px">Money responds to <strong style="color:var(--lav)">leadership</strong>. Not control. Not force. Not anxiety. When you lead yourself well, money follows cleanly.</div>
+    <p style="font-size:13.5px;color:var(--txts);line-height:1.8">Money responds to <strong style="color:var(--accentlt)">leadership</strong>. Not control. Not force. Not anxiety. When you lead yourself well, money follows cleanly.</p>
   </div>
 
-  <div class="card" style="background:linear-gradient(135deg,rgba(225,77,168,0.09),rgba(207,174,220,0.06));border-color:rgba(207,174,220,0.25)">
-    <div class="eyebrow eyebrow-pink">From Attraction to Availability</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--txt);margin-bottom:12px">You no longer need to chase money.</div>
-    <p style="font-size:13px;color:var(--txts);line-height:1.75;margin-bottom:10px">Your work now is availability. Availability looks like:</p>
+  <div class="card" style="background:linear-gradient(135deg,rgba(115,57,96,0.12),rgba(179,106,162,0.07));border-color:rgba(179,106,162,0.28)">
+    <div class="eyebrow eyebrow-detail">From Attraction to Availability</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--txt);margin-bottom:12px">You no longer need to chase money.</div>
     <ul class="bullet-list" style="margin-bottom:14px">
       <li>showing up consistently</li>
       <li>making clear decisions</li>
@@ -589,9 +815,9 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
       <li>allowing support</li>
       <li>resting without guilt</li>
     </ul>
-    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--lav);margin:10px 0">This is not passive. This is mature. This is abundance that lasts.</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accentlt);margin:12px 0">This is not passive. This is mature. This is abundance that lasts.</div>
     <div class="divider"></div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--txt);margin-bottom:8px">You are not "becoming wealthy someday."</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--txt);margin-bottom:10px">You are not "becoming wealthy someday."</div>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.9">You are becoming the woman who can hold it.<br>Calmly. Cleanly. Without self-betrayal.<br><br>This is the art of receiving abundance.<br>And this is where the work becomes your life.</p>
   </div>
 
@@ -605,8 +831,8 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 
 <!-- SAVE BAR -->
 <div class="save-bar">
-  <div class="save-status" id="saveStatus">All responses saved locally ✦</div>
-  <div class="nav-btns-bottom">
+  <div class="save-status" id="saveStatus">✦ All responses saved locally</div>
+  <div class="nav-btns-bot">
     <button class="nav-b" id="prevBtn" onclick="changeSection(-1)">← Prev</button>
     <button class="nav-b primary" id="nextBtn" onclick="changeSection(1)">Next →</button>
   </div>
@@ -614,184 +840,146 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 
 <!-- FOOTER -->
 <div class="footer">
-  <canvas id="footerCanvas"></canvas>
+  <div class="stars"></div>
+  <div class="glow"></div>
   <div class="footer-inner">
-    <div class="footer-script">receive. trust. become.</div>
+    <div class="footer-script">She's already inside you.</div>
     <div class="footer-title">The Art of Receiving <em>Abundance</em></div>
-    <div class="footer-brand">✦ The Badass Alchemy Method · Be a Beautiful Badass ✦</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--accentlt);margin-top:12px;letter-spacing:1.5px">Detox · Activate · Open · Build</div>
+    <div class="footer-brand">✦ The Badass Alchemy Method · Baddie Society · Beautiful Badass ✦</div>
   </div>
 </div>
 
-<script>
-// ── STAR FIELD ──
-function drawStars(canvasId,count){
-  const c=document.getElementById(canvasId);if(!c)return;
-  const ctx=c.getContext('2d');
-  const W=c.width=c.offsetWidth,H=c.height=c.offsetHeight;
-  ctx.clearRect(0,0,W,H);
-  for(let i=0;i<count;i++){
-    const x=Math.random()*W,y=Math.random()*H,r=Math.random()*1.3+0.2,a=Math.random()*.7+.2;
-    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
-    ctx.fillStyle=Math.random()>.65?'#CFAEDC':'#ffffff';
-    ctx.globalAlpha=a;ctx.fill();
-  }
-  ctx.globalAlpha=1;
-  const g=ctx.createRadialGradient(W*.7,H*.3,0,W*.7,H*.3,W*.45);
-  g.addColorStop(0,'rgba(207,174,220,0.09)');g.addColorStop(1,'transparent');
-  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-}
-drawStars('heroCanvas',160);drawStars('footerCanvas',100);
+</div><!-- /page-wrap -->
 
-// ── SECTIONS ──
+<script>
+// SECTIONS
 let cur=0;
 const secs=document.querySelectorAll('.section');
 const navBtns=document.querySelectorAll('.nav-btn');
 function showSection(n){
-  secs[cur].classList.remove('active');
-  navBtns[cur].classList.remove('active');
-  cur=n;
-  secs[cur].classList.add('active');
-  navBtns[cur].classList.add('active');
+  secs[cur].classList.remove('active');navBtns[cur].classList.remove('active');
+  cur=n;secs[cur].classList.add('active');navBtns[cur].classList.add('active');
   document.getElementById('progFill').style.width=((cur+1)/6*100)+'%';
-  document.getElementById('progCount').textContent=(cur+1)+'/6';
+  document.getElementById('progCount').textContent=(cur+1)+' / 6';
   document.getElementById('prevBtn').disabled=cur===0;
   document.getElementById('nextBtn').textContent=cur===5?'Complete ✦':'Next →';
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function changeSection(dir){const n=cur+dir;if(n>=0&&n<6)showSection(n);}
+function changeSection(d){const n=cur+d;if(n>=0&&n<6)showSection(n);}
 navBtns.forEach((b,i)=>b.addEventListener('click',()=>showSection(i)));
 
-// ── BODY CHECK ──
+// BODY CHECK
 document.querySelectorAll('.body-zone').forEach(z=>{
   z.addEventListener('click',()=>{z.classList.toggle('felt');saveAll();});
 });
 
-// ── MONEY BLOCKS ──
+// BLOCKS
 document.querySelectorAll('.block-item').forEach(b=>{
   b.addEventListener('click',()=>{b.classList.toggle('checked');saveAll();});
 });
 
-// ── BURN IT ──
+// BURN
 function burnIt(){
   const btn=document.getElementById('burnBtn');
   const msg=document.getElementById('burnMsg');
-  btn.classList.add('burn-flash');
-  setTimeout(()=>{btn.classList.remove('burn-flash');btn.textContent='🔥 Released';btn.disabled=true;msg.style.display='block';saveAll();},600);
+  btn.style.animation='burnFlash .6s ease';
+  setTimeout(()=>{btn.textContent='🔥 Released';btn.disabled=true;msg.style.display='block';saveAll();},600);
 }
 
-// ── AFFIRMATIONS ──
+// AFFIRMATIONS
 let picked=[];
 document.querySelectorAll('.aff-item').forEach(a=>{
   a.addEventListener('click',()=>{
-    const text=a.dataset.aff;
+    const txt=a.dataset.aff;
     if(a.classList.contains('picked')){
-      a.classList.remove('picked');picked=picked.filter(x=>x!==text);
+      a.classList.remove('picked');picked=picked.filter(x=>x!==txt);
     } else {
-      if(picked.length>=3){alert('Pick only 3 for today. Deselect one first ✦');return;}
-      a.classList.add('picked');picked.push(text);
+      if(picked.length>=3){alert('Pick only 3 for today, Queen. Deselect one first ✦');return;}
+      a.classList.add('picked');picked.push(txt);
     }
-    const cnt=document.getElementById('pickCount');
-    const done=document.getElementById('pickDone');
+    document.getElementById('pickCount').textContent=picked.length;
+    document.getElementById('pickDone').style.display=picked.length===3?'inline':'none';
     const card=document.getElementById('todayCard');
-    cnt.textContent=picked.length;
-    done.style.display=picked.length===3?'inline':'none';
-    card.innerHTML=picked.length?picked.map(t=>`<div style="margin-bottom:10px;font-style:italic;font-size:14px">✦ ${t}</div>`).join(''):'Your 3 affirmations for today will appear here ✦';
-    card.style.fontFamily=picked.length?"'Cormorant Garamond',serif":"'Montserrat',sans-serif";
-    card.style.fontStyle=picked.length?'italic':'normal';
-    card.style.fontSize=picked.length?'16px':'12px';
-    card.style.color=picked.length?'var(--txt)':'var(--txtq)';
+    const inner=card.querySelector('div[style*="z-index"]')||card;
+    if(picked.length){
+      card.innerHTML='<div class="stars"></div><div style="position:relative;z-index:1;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.8">'+picked.map(t=>`✦ ${t}`).join('<br>')+'</div>';
+    } else {
+      card.innerHTML='<div class="stars"></div><div style="position:relative;z-index:1;font-family:\'Montserrat\',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>';
+    }
     saveAll();
   });
 });
 
-// ── STREAK ──
-const streakDays=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+// STREAK
+const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const streakGrid=document.getElementById('streakGrid');
 let streak=JSON.parse(localStorage.getItem('ba_streak')||'{}');
-streakDays.forEach((d,i)=>{
-  const btn=document.createElement('div');
-  btn.style.cssText='padding:10px 4px;border-radius:10px;border:1px solid var(--bdr);background:rgba(207,174,220,0.04);text-align:center;cursor:pointer;transition:all .2s;font-size:10px;color:var(--txtm);font-weight:600';
-  btn.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✅':'○'}</div>${d}`;
-  btn.addEventListener('click',()=>{streak[i]=!streak[i];btn.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✅':'○'}</div>${d}`;localStorage.setItem('ba_streak',JSON.stringify(streak));});
-  streakGrid.appendChild(btn);
+DAYS.forEach((d,i)=>{
+  const el=document.createElement('div');
+  el.className='streak-day'+(streak[i]?' done':'');
+  el.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✦':'○'}</div>${d}`;
+  el.addEventListener('click',()=>{
+    streak[i]=!streak[i];
+    el.className='streak-day'+(streak[i]?' done':'');
+    el.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✦':'○'}</div>${d}`;
+    localStorage.setItem('ba_streak',JSON.stringify(streak));
+  });
+  streakGrid.appendChild(el);
 });
 
-// ── EMBODIMENT STEPS ──
-function nextBreath(step){
-  for(let i=0;i<4;i++){
-    const el=document.getElementById('breathStep'+i);
-    if(el)el.style.display=i===step?'block':'none';
-  }
-}
+// EMBODIMENT
+function nextBreath(s){for(let i=0;i<4;i++){const el=document.getElementById('breathStep'+i);if(el)el.style.display=i===s?'block':'none';}}
 
-// ── VIDEO LOADER ──
+// VIDEO LOADER
+const HARDCODED={'vidUrl1':'https://youtu.be/7LkWleRL7ig','vidUrl2':'https://youtu.be/hpPjY5H11Bs'};
 function loadVideo(inputId,embedId,slotId){
-  const url=document.getElementById(inputId).value.trim();
-  let vid='';
+  const url=document.getElementById(inputId).value.trim()||HARDCODED[inputId]||'';
   const m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  if(m)vid=m[1];
-  if(!vid){alert('Please enter a valid YouTube URL');return;}
+  if(!m){alert('Please enter a valid YouTube URL');return;}
   const iframe=document.getElementById(embedId);
-  iframe.src=`https://www.youtube.com/embed/${vid}`;
+  iframe.src=`https://www.youtube.com/embed/${m[1]}`;
   iframe.style.display='block';
   document.getElementById(slotId).style.display='none';
   localStorage.setItem('ba_vid_'+inputId,url);
 }
 
-// ── SAVE / LOAD ──
-const textareaIds=['j1','j2','j3','j4','bodyNotes','inheritedNotes','releaseWrite','ritualNotes','meditNotes','embodimentReflect','integrationNotes'];
+// SAVE / LOAD
+const IDS=['j1','j2','j3','j4','bodyNotes','inheritedNotes','releaseWrite','ritualNotes','meditNotes','embodimentReflect','integrationNotes'];
 function saveAll(){
-  textareaIds.forEach(id=>{const el=document.getElementById(id);if(el)localStorage.setItem('ba_'+id,el.value);});
-  // body zones
+  IDS.forEach(id=>{const el=document.getElementById(id);if(el)localStorage.setItem('ba_'+id,el.value);});
   const zones={};document.querySelectorAll('.body-zone').forEach(z=>zones[z.dataset.zone]=z.classList.contains('felt'));
   localStorage.setItem('ba_zones',JSON.stringify(zones));
-  // blocks
   const blocks={};document.querySelectorAll('.block-item').forEach(b=>blocks[b.dataset.block]=b.classList.contains('checked'));
   localStorage.setItem('ba_blocks',JSON.stringify(blocks));
-  // affirmations
   localStorage.setItem('ba_picked',JSON.stringify(picked));
-  // burn
-  const burnDone=document.getElementById('burnBtn').disabled;
-  localStorage.setItem('ba_burnDone',burnDone?'1':'0');
-  const status=document.getElementById('saveStatus');
-  status.textContent='Saved ✦';status.className='save-status saved';
-  clearTimeout(window._saveTimer);
-  window._saveTimer=setTimeout(()=>{status.textContent='All responses saved locally ✦';status.className='save-status saved';},2000);
+  localStorage.setItem('ba_burnDone',document.getElementById('burnBtn').disabled?'1':'0');
+  const st=document.getElementById('saveStatus');
+  st.textContent='✦ Saved';st.className='save-status saved';
+  clearTimeout(window._t);
+  window._t=setTimeout(()=>{st.textContent='✦ All responses saved locally';st.className='save-status saved';},2000);
 }
-  // pre-load hardcoded videos
-  const HARDCODED_VIDS={'vidUrl1':'https://youtu.be/7LkWleRL7ig','vidUrl2':'https://youtu.be/hpPjY5H11Bs'};
-
-  function loadAll(){
-  textareaIds.forEach(id=>{const el=document.getElementById(id);if(el&&localStorage.getItem('ba_'+id))el.value=localStorage.getItem('ba_'+id);});
+function loadAll(){
+  IDS.forEach(id=>{const el=document.getElementById(id);if(el&&localStorage.getItem('ba_'+id))el.value=localStorage.getItem('ba_'+id);});
   const zones=JSON.parse(localStorage.getItem('ba_zones')||'{}');
   document.querySelectorAll('.body-zone').forEach(z=>{if(zones[z.dataset.zone])z.classList.add('felt');});
   const blocks=JSON.parse(localStorage.getItem('ba_blocks')||'{}');
   document.querySelectorAll('.block-item').forEach(b=>{if(blocks[b.dataset.block])b.classList.add('checked');});
-  const savedPicked=JSON.parse(localStorage.getItem('ba_picked')||'[]');
-  if(savedPicked.length){
-    savedPicked.forEach(txt=>{
-      const a=document.querySelector(`.aff-item[data-aff="${txt}"]`);
-      if(a){a.classList.add('picked');picked.push(txt);}
-    });
+  const sp=JSON.parse(localStorage.getItem('ba_picked')||'[]');
+  if(sp.length){
+    sp.forEach(txt=>{const a=document.querySelector(`.aff-item[data-aff="${txt}"]`);if(a){a.classList.add('picked');picked.push(txt);}});
     document.getElementById('pickCount').textContent=picked.length;
     if(picked.length===3)document.getElementById('pickDone').style.display='inline';
     const card=document.getElementById('todayCard');
-    card.innerHTML=picked.map(t=>`<div style="margin-bottom:10px;font-style:italic;font-size:14px">✦ ${t}</div>`).join('');
-    card.style.fontFamily="'Cormorant Garamond',serif";card.style.fontStyle='italic';card.style.fontSize='16px';card.style.color='var(--txt)';
+    card.innerHTML='<div class="stars"></div><div style="position:relative;z-index:1;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.8">'+picked.map(t=>`✦ ${t}`).join('<br>')+'</div>';
   }
-  if(localStorage.getItem('ba_burnDone')==='1'){
-    document.getElementById('burnBtn').textContent='🔥 Released';
-    document.getElementById('burnBtn').disabled=true;
-    document.getElementById('burnMsg').style.display='block';
-  }
-  // load videos — hardcoded first, localStorage overrides if present
+  if(localStorage.getItem('ba_burnDone')==='1'){document.getElementById('burnBtn').textContent='🔥 Released';document.getElementById('burnBtn').disabled=true;document.getElementById('burnMsg').style.display='block';}
   ['vidUrl1','vidUrl2'].forEach((id,i)=>{
-    const saved=localStorage.getItem('ba_vid_'+id)||HARDCODED_VIDS[id];
+    const saved=localStorage.getItem('ba_vid_'+id)||HARDCODED[id];
     if(saved){document.getElementById(id).value=saved;loadVideo(id,'vidEmbed'+(i+1),'videoSlot'+(i+1));}
   });
 }
-// auto-save on input
-textareaIds.forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',saveAll);});
+IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',saveAll);});
 loadAll();
 </script>
 </body>
