@@ -120,7 +120,7 @@ html,body{background:var(--bg);color:var(--txts);font-family:'Montserrat',sans-s
 .nav-btn.active{color:var(--accentlt);border-bottom-color:var(--accentlt)}
 
 /* ── CONTENT ── */
-.content{max-width:680px;margin:0 auto;padding:32px 20px 100px}
+.content{max-width:680px;margin:0 auto;padding:32px 20px 120px}
 .section{display:none}
 .section.active{display:block;animation:fadeUp .4s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -354,6 +354,7 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   background:rgba(13,6,16,0.96);backdrop-filter:blur(16px);
   border-top:1px solid var(--bdr);padding:12px 24px;
   display:flex;align-items:center;justify-content:space-between;z-index:200;
+  min-height:56px;
 }
 .save-status{font-size:10px;color:var(--txtq);font-weight:500}
 .save-status.saved{color:var(--accentlt)}
@@ -370,7 +371,7 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 /* ── FOOTER ── */
 .footer{
   position:relative;overflow:hidden;
-  padding:52px 24px 56px;text-align:center;
+  padding:52px 24px 80px;text-align:center;
 }
 .footer::before{
   content:'';position:absolute;inset:0;
