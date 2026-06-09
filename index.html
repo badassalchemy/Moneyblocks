@@ -8,115 +8,116 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
+
+/* ── DARK MODE (default) ── */
 :root{
-  --bg:#0D0610;
-  --bgm:#180B1E;
-  --dark:#0D0618;
-  --darkm:#461D34;
-  --accent:#733960;
-  --accentlt:#B16AA2;
-  --tertiary:#9B4E7A;
-  --detail:#C4789A;
-  --orchid:#C6B6CD;
-  --moonprl:#F7EDF1;
-  --txt:#F7EDF1;
-  --txts:#E8D4E0;
-  --txtm:#C4A0B8;
-  --txtf:#8A6080;
-  --txtq:#5A3A50;
-  --bdr:rgba(179,106,162,0.18);
-  --bdrb:rgba(179,106,162,0.32);
-  --shd:rgba(36,10,25,0.5);
-  --shh:rgba(115,57,96,0.35);
+  --bg:#0D0610;--bgm:#180B1E;--dark:#0D0618;--darkm:#461D34;
+  --accent:#733960;--accentlt:#B16AA2;--tertiary:#9B4E7A;
+  --detail:#C4789A;--orchid:#C6B6CD;--moonprl:#F7EDF1;
+  --txt:#F7EDF1;--txts:#E8D4E0;--txtm:#C4A0B8;
+  --txtf:#8A6080;--txtq:#5A3A50;
+  --bdr:rgba(179,106,162,0.18);--bdrb:rgba(179,106,162,0.32);
+  --shd:rgba(36,10,25,0.5);--shh:rgba(115,57,96,0.35);
   --card:rgba(18,6,28,0.82);
+  --input-bg:rgba(179,106,162,0.06);
+  --nav-bg:rgba(13,6,16,0.95);
+  --prog-bg:rgba(13,6,16,0.92);
+  --save-bg:rgba(13,6,16,0.96);
+  --pull-bg:linear-gradient(135deg,#0D0618,#461D34);
+  --pull-border:rgba(115,57,96,0.3);
+  --body-zone-bg:rgba(179,106,162,0.05);
+  --block-bg:rgba(179,106,162,0.04);
+  --block-checked:rgba(179,106,162,0.12);
+  --aff-bg:rgba(179,106,162,0.04);
+  --aff-hover:rgba(179,106,162,0.09);
+  --aff-picked:rgba(115,57,96,0.16);
+  --release-bg:linear-gradient(135deg,rgba(115,57,96,0.12),rgba(179,106,162,0.07));
+  --cal-bg:rgba(18,6,28,0.82);
+  --vid-slot-bg:rgba(179,106,162,0.05);
+  --breath-bg:linear-gradient(135deg,rgba(179,106,162,0.09),rgba(115,57,96,0.07));
+  --int-card-bg:linear-gradient(135deg,rgba(115,57,96,0.12),rgba(179,106,162,0.07));
+  --footer-overlay:linear-gradient(160deg,rgba(13,6,24,0.7),rgba(70,29,52,0.6));
+  --nebula-filter:brightness(0.45) saturate(1.3);
+  --nebula-overlay:linear-gradient(180deg,rgba(13,6,16,0.55) 0%,rgba(13,6,24,0.72) 40%,rgba(13,6,16,0.88) 100%);
+  --stars-opacity:1;
+  --card-box:0 4px 24px rgba(36,10,25,0.5);
 }
 
-/* GRADIENTS */
-.grad-dark{background:linear-gradient(160deg,#0D0618 0%,#1A0828 30%,#3A0F30 65%,#5C1640 100%)}
-.grad-mid{background:linear-gradient(150deg,#110820 0%,#2A0D3A 35%,#4A1545 60%,#7A1E50 100%)}
+/* ── LIGHT MODE ── */
+.light{
+  --bg:#F7EDF1;--bgm:#F0E2EB;--dark:#EDD5E3;--darkm:#E0C0D4;
+  --txt:#2A0D1E;--txts:#3A1830;--txtm:#5A2A42;
+  --txtf:#8A5070;--txtq:#B07090;
+  --bdr:rgba(115,57,96,0.18);--bdrb:rgba(115,57,96,0.32);
+  --shd:rgba(115,57,96,0.1);--shh:rgba(115,57,96,0.2);
+  --card:rgba(247,237,241,0.88);
+  --input-bg:rgba(255,255,255,0.75);
+  --nav-bg:rgba(247,237,241,0.96);
+  --prog-bg:rgba(247,237,241,0.94);
+  --save-bg:rgba(247,237,241,0.96);
+  --pull-bg:linear-gradient(135deg,rgba(247,237,241,0.95),rgba(240,220,232,0.9));
+  --pull-border:rgba(115,57,96,0.2);
+  --body-zone-bg:rgba(115,57,96,0.04);
+  --block-bg:rgba(115,57,96,0.04);
+  --block-checked:rgba(115,57,96,0.1);
+  --aff-bg:rgba(115,57,96,0.04);
+  --aff-hover:rgba(115,57,96,0.08);
+  --aff-picked:rgba(115,57,96,0.12);
+  --release-bg:linear-gradient(135deg,rgba(115,57,96,0.08),rgba(179,106,162,0.05));
+  --cal-bg:rgba(247,237,241,0.88);
+  --vid-slot-bg:rgba(115,57,96,0.04);
+  --breath-bg:linear-gradient(135deg,rgba(247,237,241,0.9),rgba(235,210,225,0.8));
+  --int-card-bg:linear-gradient(135deg,rgba(115,57,96,0.08),rgba(179,106,162,0.05));
+  --footer-overlay:linear-gradient(160deg,rgba(247,237,241,0.75),rgba(240,220,232,0.85));
+  --nebula-filter:brightness(1.2) saturate(0.35) invert(1);
+  --nebula-overlay:linear-gradient(180deg,rgba(247,237,241,0.65) 0%,rgba(240,225,234,0.78) 40%,rgba(247,237,241,0.9) 100%);
+  --stars-opacity:0.2;
+  --card-box:0 4px 20px rgba(115,57,96,0.1);
+}
 
-html,body{background:var(--bg);color:var(--txts);font-family:'Montserrat',sans-serif;min-height:100vh;overflow-x:hidden}
+html,body{background:var(--bg);color:var(--txts);font-family:'Montserrat',sans-serif;min-height:100vh;overflow-x:hidden;transition:background .35s,color .35s}
 ::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:rgba(179,106,162,0.3);border-radius:2px}
+::-webkit-scrollbar-thumb{background:rgba(115,57,96,0.3);border-radius:2px}
 
 /* ── NEBULA BG ── */
-.nebula-bg{
-  position:fixed;inset:0;z-index:0;
-  background-image:url('https://raw.githubusercontent.com/badassalchemy/imageassets/main/dark%20nebula%20baxckground.jpg');
-  background-size:cover;background-position:center;background-attachment:fixed;
-  filter:brightness(0.45) saturate(1.3);
-}
-.nebula-overlay{
-  position:fixed;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(13,6,16,0.55) 0%,rgba(13,6,24,0.72) 40%,rgba(13,6,16,0.88) 100%);
-}
+.nebula-bg{position:fixed;inset:0;z-index:0;background-image:url('https://raw.githubusercontent.com/badassalchemy/imageassets/main/dark%20nebula%20baxckground.jpg');background-size:cover;background-position:center;background-attachment:fixed;filter:var(--nebula-filter);transition:filter .5s}
+.nebula-overlay{position:fixed;inset:0;z-index:1;background:var(--nebula-overlay);transition:background .5s}
 .page-wrap{position:relative;z-index:2}
 
-/* Stars CSS */
-.stars{
-  position:absolute;inset:0;pointer-events:none;
-  background-image:
-    radial-gradient(1px 1px at 15% 25%,rgba(247,237,241,0.5),transparent),
-    radial-gradient(1.5px 1.5px at 55% 12%,rgba(247,237,241,0.4),transparent),
-    radial-gradient(1px 1px at 82% 58%,rgba(247,237,241,0.45),transparent),
-    radial-gradient(1px 1px at 38% 78%,rgba(247,237,241,0.3),transparent),
-    radial-gradient(1px 1px at 8% 68%,rgba(247,237,241,0.35),transparent),
-    radial-gradient(1.5px 1.5px at 92% 22%,rgba(247,237,241,0.5),transparent),
-    radial-gradient(1px 1px at 70% 88%,rgba(196,120,154,0.5),transparent),
-    radial-gradient(1px 1px at 28% 45%,rgba(177,106,162,0.4),transparent),
-    radial-gradient(1.5px 1.5px at 48% 35%,rgba(247,237,241,0.3),transparent),
-    radial-gradient(1px 1px at 62% 65%,rgba(247,237,241,0.35),transparent);
-}
-.glow{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse at 60% 55%,rgba(200,60,120,0.18),transparent 60%),
-    radial-gradient(ellipse at 20% 30%,rgba(100,30,90,0.22),transparent 55%);
-}
+/* Stars */
+.stars{position:absolute;inset:0;pointer-events:none;opacity:var(--stars-opacity);background-image:radial-gradient(1px 1px at 15% 25%,rgba(247,237,241,0.5),transparent),radial-gradient(1.5px 1.5px at 55% 12%,rgba(247,237,241,0.4),transparent),radial-gradient(1px 1px at 82% 58%,rgba(247,237,241,0.45),transparent),radial-gradient(1px 1px at 38% 78%,rgba(247,237,241,0.3),transparent),radial-gradient(1px 1px at 8% 68%,rgba(247,237,241,0.35),transparent),radial-gradient(1.5px 1.5px at 92% 22%,rgba(247,237,241,0.5),transparent),radial-gradient(1px 1px at 70% 88%,rgba(196,120,154,0.5),transparent),radial-gradient(1px 1px at 28% 45%,rgba(177,106,162,0.4),transparent)}
+.glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 60% 55%,rgba(200,60,120,0.18),transparent 60%),radial-gradient(ellipse at 20% 30%,rgba(100,30,90,0.22),transparent 55%)}
 
-/* ── HERO ── */
-.hero{
-  position:relative;overflow:hidden;
-  min-height:280px;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  padding:64px 24px 52px;
-}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,6,24,0.3),rgba(70,29,52,0.4));z-index:0}
+/* ── HERO — always dark ── */
+.hero{position:relative;overflow:hidden;min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;padding:64px 24px 52px;background:linear-gradient(160deg,#0D0618 0%,#1A0828 30%,#3A0F30 65%,#5C1640 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 55%,rgba(200,60,120,0.18),transparent 60%),radial-gradient(ellipse at 20% 30%,rgba(100,30,90,0.22),transparent 55%);z-index:0}
+.hero .stars{opacity:1 !important}
 .hero-inner{position:relative;z-index:2}
-.hero-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--detail);letter-spacing:1.5px;margin-bottom:10px}
-.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--accentlt);text-transform:uppercase;margin-bottom:14px}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5.5vw,48px);font-weight:700;color:var(--txt);line-height:1.1;margin-bottom:8px}
-.hero-title em{color:var(--accentlt);font-style:italic;font-weight:400}
-.hero-sub{font-size:12px;color:var(--txtm);line-height:1.75;max-width:380px;margin:0 auto 18px}
-.hero-accent{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--accentlt);letter-spacing:2px;opacity:0.85}
+.hero-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#C4789A;letter-spacing:1.5px;margin-bottom:10px}
+.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:2.5px;color:#B16AA2;text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5.5vw,48px);font-weight:700;color:#F7EDF1;line-height:1.1;margin-bottom:8px}
+.hero-title em{color:#B16AA2;font-style:italic;font-weight:400}
+.hero-sub{font-size:12px;color:#C4A0B8;line-height:1.75;max-width:380px;margin:0 auto 18px}
+.hero-accent{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#B16AA2;letter-spacing:2px;opacity:.85}
+
+/* ── DARK MODE TOGGLE ── */
+.mode-toggle-wrap{position:absolute;top:16px;right:20px;z-index:10;display:flex;align-items:center;gap:9px}
+.mode-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(247,237,241,0.65)}
+.toggle-track{width:44px;height:24px;border-radius:50px;background:rgba(247,237,241,0.15);border:1px solid rgba(247,237,241,0.25);cursor:pointer;position:relative;transition:background .3s}
+.toggle-track.on{background:rgba(179,106,162,0.4);border-color:rgba(179,106,162,0.5)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#F7EDF1;transition:transform .3s,background .3s;display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1}
+.toggle-track.on .toggle-thumb{transform:translateX(20px)}
 
 /* ── PROGRESS ── */
-.prog-bar{
-  background:rgba(13,6,16,0.92);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  padding:10px 24px;display:flex;align-items:center;gap:12px;
-  border-bottom:1px solid var(--bdr);
-  position:sticky;top:0;z-index:100;
-}
+.prog-bar{background:var(--prog-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:10px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;transition:background .35s}
 .prog-label{font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--txtq);white-space:nowrap}
-.prog-track{flex:1;height:3px;background:rgba(179,106,162,0.1);border-radius:2px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accentlt));border-radius:2px;transition:width .4s ease}
+.prog-track{flex:1;height:3px;background:rgba(115,57,96,0.15);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#733960,#B16AA2);border-radius:2px;transition:width .4s ease}
 .prog-count{font-size:9px;font-weight:700;color:var(--accentlt);white-space:nowrap}
 
 /* ── NAV ── */
-.nav{
-  position:sticky;top:41px;z-index:99;
-  background:rgba(13,6,16,0.95);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--bdr);
-  display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
-}
-.nav-btn{
-  font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  padding:14px 14px 12px;border:none;background:none;
-  color:var(--txtq);cursor:pointer;white-space:nowrap;flex-shrink:0;
-  transition:color .2s;border-bottom:2px solid transparent;
-}
+.nav{position:sticky;top:41px;z-index:99;background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;transition:background .35s}
+.nav-btn{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 14px 12px;border:none;background:none;color:var(--txtq);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:color .2s;border-bottom:2px solid transparent}
 .nav-btn.active{color:var(--accentlt);border-bottom-color:var(--accentlt)}
 
 /* ── CONTENT ── */
@@ -126,141 +127,66 @@ html,body{background:var(--bg);color:var(--txts);font-family:'Montserrat',sans-s
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── SECTION HEADER ── */
-.sec-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:60px;font-weight:700;
-  color:rgba(179,106,162,0.08);
-  line-height:1;margin-bottom:-10px;
-}
-.sec-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(26px,4vw,34px);font-weight:700;
-  color:var(--txt);line-height:1.15;margin-bottom:8px;
-}
+.sec-num{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:rgba(115,57,96,0.12);line-height:1;margin-bottom:-10px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,34px);font-weight:700;color:var(--txt);line-height:1.15;margin-bottom:8px}
 .sec-title em{color:var(--accentlt);font-style:italic;font-weight:400}
 .sec-lead{font-size:13px;color:var(--txts);line-height:1.8;margin-bottom:22px}
 
 /* ── CARD ── */
-.card{
-  background:var(--card);
-  border-radius:14px;
-  border:1px solid var(--bdr);
-  box-shadow:0 4px 24px var(--shd);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  padding:22px 20px;margin-bottom:14px;
-  position:relative;overflow:hidden;
-}
-.card-stars .stars{opacity:0.4}
+.card{background:var(--card);border-radius:14px;border:1px solid var(--bdr);box-shadow:var(--card-box);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:22px 20px;margin-bottom:14px;position:relative;overflow:hidden;transition:background .35s,border-color .35s,box-shadow .35s}
 
 /* ── LABELS ── */
 .eyebrow{font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--accentlt);margin-bottom:10px}
 .eyebrow-orchid{color:var(--orchid)}
 .eyebrow-detail{color:var(--detail)}
 
-/* ── TEXTAREA ── */
-textarea,input[type=text]{
-  width:100%;
-  background:rgba(179,106,162,0.06);
-  border:1px solid var(--bdr);border-radius:10px;
-  color:var(--txt);font-family:'Montserrat',sans-serif;font-size:13px;
-  padding:14px 16px;resize:vertical;outline:none;
-  transition:border-color .2s;line-height:1.65;
-}
+/* ── INPUTS ── */
+textarea,input[type=text]{width:100%;background:var(--input-bg);border:1px solid var(--bdr);border-radius:10px;color:var(--txt);font-family:'Montserrat',sans-serif;font-size:13px;padding:14px 16px;resize:vertical;outline:none;transition:border-color .2s,background .35s;line-height:1.65}
 textarea:focus,input:focus{border-color:var(--accentlt)}
 textarea::placeholder,input::placeholder{color:var(--txtq)}
 
 /* ── BODY ZONES ── */
 .body-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.body-zone{
-  display:flex;align-items:center;gap:10px;
-  padding:13px 15px;border-radius:10px;
-  background:rgba(179,106,162,0.05);border:1px solid var(--bdr);
-  cursor:pointer;transition:all .2s;
-}
-.body-zone.felt{
-  border-color:var(--accentlt);background:rgba(179,106,162,0.13);
-  box-shadow:0 0 16px rgba(177,106,162,0.18);
-}
+.body-zone{display:flex;align-items:center;gap:10px;padding:13px 15px;border-radius:10px;background:var(--body-zone-bg);border:1px solid var(--bdr);cursor:pointer;transition:all .2s}
+.body-zone.felt{border-color:var(--accentlt);background:rgba(179,106,162,0.13);box-shadow:0 0 16px rgba(177,106,162,0.18)}
 .body-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--accentlt);background:transparent;transition:all .2s;flex-shrink:0}
 .body-zone.felt .body-dot{background:var(--accentlt)}
 .body-label{font-size:13px;color:var(--txts)}
 
 /* ── BLOCKS ── */
-.block-item{
-  display:flex;align-items:center;gap:12px;
-  padding:13px 15px;border-radius:10px;border:1px solid var(--bdr);
-  background:rgba(179,106,162,0.04);margin-bottom:8px;
-  cursor:pointer;transition:all .2s;
-}
-.block-item.checked{border-color:var(--accentlt);background:rgba(179,106,162,0.12);box-shadow:0 0 16px rgba(177,106,162,0.15)}
+.block-item{display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:10px;border:1px solid var(--bdr);background:var(--block-bg);margin-bottom:8px;cursor:pointer;transition:all .2s}
+.block-item.checked{border-color:var(--accentlt);background:var(--block-checked);box-shadow:0 0 16px rgba(177,106,162,0.15)}
 .block-chk{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--bdr);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.block-item.checked .block-chk{background:linear-gradient(135deg,var(--accent),var(--darkm));border-color:transparent}
-.chk-mark{color:var(--moonprl);font-size:11px;font-weight:700;opacity:0;transition:opacity .15s}
+.block-item.checked .block-chk{background:linear-gradient(135deg,#733960,#461D34);border-color:transparent}
+.chk-mark{color:#F7EDF1;font-size:11px;font-weight:700;opacity:0;transition:opacity .15s}
 .block-item.checked .chk-mark{opacity:1}
 .block-text{font-size:13px;color:var(--txts)}
 
 /* ── RELEASE BOX ── */
-.release-box{
-  background:linear-gradient(135deg,rgba(115,57,96,0.12),rgba(179,106,162,0.07));
-  border:1px solid rgba(179,106,162,0.28);
-  border-radius:14px;padding:24px 20px;margin-top:16px;
-  position:relative;overflow:hidden;
-}
-.release-line{
-  font-size:14px;color:var(--txt);line-height:2;font-style:italic;
-  padding-left:16px;border-left:2px solid var(--accent);
-}
-.burn-btn{
-  margin-top:16px;display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:700;color:var(--accentlt);
-  background:rgba(115,57,96,0.15);border:1.5px solid rgba(179,106,162,0.4);
-  border-radius:50px;padding:11px 24px;cursor:pointer;transition:all .2s;
-  font-family:'Montserrat',sans-serif;
-}
-.burn-btn:hover{background:rgba(115,57,96,0.28);transform:translateY(-1px);color:var(--moonprl)}
+.release-box{background:var(--release-bg);border:1px solid var(--bdrb);border-radius:14px;padding:24px 20px;margin-top:16px;position:relative;overflow:hidden}
+.release-line{font-size:14px;color:var(--txt);line-height:2;font-style:italic;padding-left:16px;border-left:2px solid var(--accent)}
+.burn-btn{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--accentlt);background:rgba(115,57,96,0.12);border:1.5px solid rgba(179,106,162,0.4);border-radius:50px;padding:11px 24px;cursor:pointer;transition:all .2s;font-family:'Montserrat',sans-serif}
+.burn-btn:hover{background:rgba(115,57,96,0.22);transform:translateY(-1px)}
 @keyframes burnFlash{0%,100%{opacity:1}50%{opacity:0;transform:scale(1.04)}}
 
 /* ── AFFIRMATIONS ── */
-.aff-set-label{
-  font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--detail);margin-bottom:12px;
-}
-.aff-item{
-  padding:13px 16px;border-radius:10px;border:1px solid var(--bdr);
-  background:rgba(179,106,162,0.04);margin-bottom:8px;
-  cursor:pointer;transition:all .2s;
-  font-size:13.5px;color:var(--txts);line-height:1.5;
-  display:flex;align-items:center;gap:12px;
-}
-.aff-item:hover{border-color:var(--accentlt);background:rgba(179,106,162,0.09)}
-.aff-item.picked{border-color:var(--accent);background:rgba(115,57,96,0.16);color:var(--txt);box-shadow:0 0 18px rgba(115,57,96,0.2)}
+.aff-set-label{font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--detail);margin-bottom:12px}
+.aff-item{padding:13px 16px;border-radius:10px;border:1px solid var(--bdr);background:var(--aff-bg);margin-bottom:8px;cursor:pointer;transition:all .2s;font-size:13.5px;color:var(--txts);line-height:1.5;display:flex;align-items:center;gap:12px}
+.aff-item:hover{border-color:var(--accentlt);background:var(--aff-hover)}
+.aff-item.picked{border-color:var(--accent);background:var(--aff-picked);color:var(--txt);box-shadow:0 0 18px rgba(115,57,96,0.18)}
 .aff-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--accentlt);flex-shrink:0;transition:all .2s}
 .aff-item.picked .aff-dot{background:var(--accent);border-color:var(--accent)}
 .pick-counter{font-size:11px;font-weight:600;color:var(--orchid);margin-bottom:14px}
 .pick-counter span{color:var(--accentlt);font-weight:700}
-.today-card{
-  background:linear-gradient(135deg,rgba(115,57,96,0.14),rgba(179,106,162,0.07));
-  border:1px solid rgba(179,106,162,0.3);border-radius:12px;
-  padding:20px;margin-top:6px;min-height:72px;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:16px;color:var(--txt);line-height:1.75;text-align:center;
-  position:relative;overflow:hidden;
-}
+.today-card{background:var(--release-bg);border:1px solid var(--bdrb);border-radius:12px;padding:20px;margin-top:6px;min-height:72px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.75;text-align:center;position:relative;overflow:hidden}
 
 /* ── CALENDAR ── */
 .cal-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
 .leg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--txtm)}
 .leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.cal-month-label{
-  font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--accentlt);margin:22px 0 10px;padding-left:4px;
-}
+.cal-month-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accentlt);margin:22px 0 10px;padding-left:4px}
 .cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
-.cal-event{
-  padding:14px 16px;border-radius:12px;border:1px solid var(--bdr);
-  background:var(--card);backdrop-filter:blur(10px);
-  transition:all .2s;cursor:default;position:relative;overflow:hidden;
-}
+.cal-event{padding:14px 16px;border-radius:12px;border:1px solid var(--bdr);background:var(--cal-bg);backdrop-filter:blur(10px);transition:all .2s;cursor:default;position:relative;overflow:hidden}
 .cal-event:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--shh)}
 .cal-event-date{font-size:10px;font-weight:700;color:var(--accentlt);letter-spacing:.8px;margin-bottom:4px}
 .cal-event-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
@@ -268,139 +194,80 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 .cal-event.moon-new{border-left:3px solid #7B68EE}
 .cal-event.moon-full{border-left:3px solid var(--orchid)}
 .cal-event.eclipse{border-left:3px solid var(--detail);background:rgba(196,120,154,0.07)}
-.cal-event.portal{border-left:3px solid var(--accent);background:rgba(115,57,96,0.1)}
+.cal-event.portal{border-left:3px solid var(--accent);background:rgba(115,57,96,0.08)}
 .cal-event.power{border-left:3px solid #C9A84C;background:rgba(201,168,76,0.05)}
 .cal-event.solstice{border-left:3px solid var(--accentlt);background:rgba(177,106,162,0.07)}
 
 /* ── VIDEO ── */
-.video-slot{
-  background:rgba(179,106,162,0.05);border:1px dashed rgba(179,106,162,0.28);
-  border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:14px;
-}
+.video-slot{background:var(--vid-slot-bg);border:1px dashed rgba(115,57,96,0.28);border-radius:14px;padding:32px 24px;text-align:center;margin-bottom:14px}
 .video-slot-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--accentlt);margin-bottom:8px}
 .video-slot-desc{font-size:12px;color:var(--txtm);line-height:1.65}
 .video-embed{width:100%;aspect-ratio:16/9;border-radius:12px;border:none;display:none;margin-bottom:14px}
-.vid-load-btn{
-  font-size:11px;font-weight:700;color:var(--moonprl);
-  background:linear-gradient(135deg,var(--accent),var(--darkm));
-  border:none;border-radius:50px;padding:10px 22px;cursor:pointer;
-  margin-top:10px;transition:all .2s;font-family:'Montserrat',sans-serif;
-}
+.vid-load-btn{font-size:11px;font-weight:700;color:#F7EDF1;background:linear-gradient(135deg,#733960,#461D34);border:none;border-radius:50px;padding:10px 22px;cursor:pointer;margin-top:10px;transition:all .2s;font-family:'Montserrat',sans-serif}
 .vid-load-btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
 
 /* ── STREAK ── */
-.streak-day{
-  padding:10px 4px;border-radius:10px;border:1px solid var(--bdr);
-  background:rgba(179,106,162,0.04);text-align:center;cursor:pointer;
-  transition:all .2s;font-size:10px;color:var(--txtm);font-weight:600;
-}
-.streak-day.done{background:rgba(115,57,96,0.2);border-color:var(--accentlt);color:var(--accentlt)}
+.streak-day{padding:10px 4px;border-radius:10px;border:1px solid var(--bdr);background:var(--aff-bg);text-align:center;cursor:pointer;transition:all .2s;font-size:10px;color:var(--txtm);font-weight:600}
+.streak-day.done{background:rgba(115,57,96,0.18);border-color:var(--accentlt);color:var(--accentlt)}
 
 /* ── EMBODIMENT ── */
-.breath-box{
-  background:linear-gradient(135deg,rgba(179,106,162,0.09),rgba(115,57,96,0.07));
-  border:1px solid rgba(179,106,162,0.22);border-radius:14px;
-  padding:26px 24px;margin:14px 0;text-align:center;
-  position:relative;overflow:hidden;
-}
-.breath-prompt{
-  font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;
-  color:var(--txt);line-height:1.65;margin-bottom:18px;
-}
-.breath-btn{
-  font-size:11px;font-weight:700;color:var(--moonprl);
-  background:linear-gradient(135deg,var(--accent),var(--darkm));
-  border:none;border-radius:50px;padding:11px 26px;
-  cursor:pointer;transition:all .2s;display:inline-block;font-family:'Montserrat',sans-serif;
-}
+.breath-box{background:var(--breath-bg);border:1px solid var(--bdrb);border-radius:14px;padding:26px 24px;margin:14px 0;text-align:center;position:relative;overflow:hidden}
+.breath-prompt{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--txt);line-height:1.65;margin-bottom:18px}
+.breath-btn{font-size:11px;font-weight:700;color:#F7EDF1;background:linear-gradient(135deg,#733960,#461D34);border:none;border-radius:50px;padding:11px 26px;cursor:pointer;transition:all .2s;display:inline-block;font-family:'Montserrat',sans-serif}
 .breath-btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
-.aff-speak{
-  font-size:14px;color:var(--txt);line-height:2.1;margin:14px 0;
-  padding:16px 20px;
-  background:rgba(179,106,162,0.06);border-radius:10px;
-  border-left:2px solid var(--accentlt);text-align:left;
-  font-family:'Cormorant Garamond',serif;font-style:italic;
-}
+.aff-speak{font-size:14px;color:var(--txt);line-height:2.1;margin:14px 0;padding:16px 20px;background:var(--aff-bg);border-radius:10px;border-left:2px solid var(--accentlt);text-align:left;font-family:'Cormorant Garamond',serif;font-style:italic}
 
 /* ── PULLQUOTE ── */
-.pullquote{
-  position:relative;padding:26px 24px 26px 62px;
-  background:linear-gradient(135deg,var(--dark),var(--darkm));
-  border-radius:14px;border:1px solid rgba(115,57,96,0.3);
-  margin:16px 0;overflow:hidden;
-}
-.pullquote::before{
-  content:'"';position:absolute;top:2px;left:14px;
-  font-family:'Cormorant Garamond',serif;font-size:72px;line-height:1;
-  color:var(--accent);opacity:.4;pointer-events:none;
-}
-.pullquote-text{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
-  font-size:clamp(15px,2.2vw,18px);color:var(--txt);line-height:1.6;
-  position:relative;z-index:1;
-}
+.pullquote{position:relative;padding:26px 24px 26px 62px;background:var(--pull-bg);border-radius:14px;border:1px solid var(--pull-border);margin:16px 0;overflow:hidden;box-shadow:var(--card-box)}
+.pullquote::before{content:'"';position:absolute;top:2px;left:14px;font-family:'Cormorant Garamond',serif;font-size:72px;line-height:1;color:var(--accent);opacity:.35;pointer-events:none}
+.pullquote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(15px,2.2vw,18px);color:var(--txt);line-height:1.6;position:relative;z-index:1}
 
 /* ── BULLETS ── */
 .bullet-list{list-style:none;padding:0}
 .bullet-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:13px;color:var(--txts);line-height:1.65}
 .bullet-list li::before{content:'✦';color:var(--accentlt);font-size:10px;flex-shrink:0;margin-top:3px}
-
-/* ── DIVIDER ── */
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);margin:18px 0}
 
 /* ── SAVE BAR ── */
-.save-bar{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(13,6,16,0.96);backdrop-filter:blur(16px);
-  border-top:1px solid var(--bdr);padding:12px 24px;
-  display:flex;align-items:center;justify-content:space-between;z-index:200;
-  min-height:56px;
-}
+.save-bar{position:fixed;bottom:0;left:0;right:0;background:var(--save-bg);backdrop-filter:blur(16px);border-top:1px solid var(--bdr);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:200;min-height:56px;transition:background .35s}
 .save-status{font-size:10px;color:var(--txtq);font-weight:500}
 .save-status.saved{color:var(--accentlt)}
 .nav-btns-bot{display:flex;gap:8px}
-.nav-b{
-  font-size:10px;font-weight:700;padding:9px 20px;border-radius:50px;
-  border:1.5px solid var(--bdr);background:transparent;color:var(--txtm);
-  cursor:pointer;transition:all .2s;font-family:'Montserrat',sans-serif;
-}
-.nav-b.primary{background:linear-gradient(135deg,var(--accent),var(--darkm));border-color:transparent;color:var(--moonprl)}
+.nav-b{font-size:10px;font-weight:700;padding:9px 20px;border-radius:50px;border:1.5px solid var(--bdr);background:transparent;color:var(--txtm);cursor:pointer;transition:all .2s;font-family:'Montserrat',sans-serif}
+.nav-b.primary{background:linear-gradient(135deg,#733960,#461D34);border-color:transparent;color:#F7EDF1}
 .nav-b:hover:not(.primary){border-color:var(--accentlt);color:var(--accentlt)}
-.nav-b.primary:hover{filter:brightness(1.12);color:var(--moonprl)}
+.nav-b.primary:hover{filter:brightness(1.12)}
 
 /* ── FOOTER ── */
-.footer{
-  position:relative;overflow:hidden;
-  padding:52px 24px 80px;text-align:center;
-}
-.footer::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(160deg,rgba(13,6,24,0.7),rgba(70,29,52,0.6));
-}
+.footer{position:relative;overflow:hidden;padding:52px 24px 80px;text-align:center}
+.footer::before{content:'';position:absolute;inset:0;background:var(--footer-overlay);transition:background .5s}
 .footer-inner{position:relative;z-index:2}
 .footer-script{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--detail);letter-spacing:1.5px;margin-bottom:12px}
 .footer-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--txt);line-height:1.3}
 .footer-title em{color:var(--accentlt);font-style:italic}
 .footer-brand{font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--txtf);margin-top:20px}
 
-/* RESPONSIVE */
-@media(max-width:600px){
-  .cal-grid{grid-template-columns:1fr}
-  .body-grid{grid-template-columns:1fr}
-}
+@media(max-width:600px){.cal-grid{grid-template-columns:1fr}.body-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<div class="nebula-bg"></div>
-<div class="nebula-overlay"></div>
+<div class="nebula-bg" id="nebulaBg"></div>
+<div class="nebula-overlay" id="nebulaOverlay"></div>
 
 <div class="page-wrap">
 
-<!-- HERO -->
+<!-- HERO — always dark -->
 <div class="hero">
   <div class="stars"></div>
-  <div class="glow"></div>
+
+  <!-- MODE TOGGLE -->
+  <div class="mode-toggle-wrap">
+    <span class="mode-label" id="modeLabel">Dark</span>
+    <div class="toggle-track" id="toggleTrack" onclick="toggleMode()">
+      <div class="toggle-thumb" id="toggleThumb">🌙</div>
+    </div>
+  </div>
+
   <div class="hero-inner">
     <div class="hero-script">The Badass Alchemy Method</div>
     <div class="hero-eyebrow">Baddie Society</div>
@@ -434,10 +301,8 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   <div class="sec-num">01</div>
   <h2 class="sec-title">Your Money Story <em>The Audit</em></h2>
   <p class="sec-lead">Money blocks are not mindset issues. They are safety issues. Most women don't repel money — their nervous system doesn't feel safe holding it. Let's find where yours started.</p>
-
-  <div class="card card-stars">
-    <div class="stars"></div>
-    <div class="glow"></div>
+  <div class="card">
+    <div class="stars" style="opacity:0.25"></div>
     <div style="position:relative;z-index:1">
       <div class="eyebrow">Journal Prompts</div>
       <p style="font-size:12px;color:var(--txtm);margin-bottom:16px;line-height:1.65">Take your time. Write whatever comes up — there are no right answers.</p>
@@ -449,7 +314,6 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="eyebrow eyebrow-detail">Body Check</div>
     <p style="font-size:13px;color:var(--txts);margin-bottom:14px;line-height:1.65">When you think about having more money — where do you feel tension? Tap all that apply.</p>
@@ -463,13 +327,10 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
     </div>
     <div style="margin-top:14px">
       <div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Notes on what you noticed:</div>
-      <textarea id="bodyNotes" rows="2" placeholder="E.g. 'I noticed tightness in my chest and a held breath...'"></textarea>
+      <textarea id="bodyNotes" rows="2" placeholder="E.g. 'I noticed tightness in my chest...'"></textarea>
     </div>
   </div>
-
-  <div class="pullquote">
-    <div class="pullquote-text">Money blocks are not mindset issues. They are safety issues. Your nervous system doesn't feel safe holding it. That's where we begin.</div>
-  </div>
+  <div class="pullquote"><div class="pullquote-text">Money blocks are not mindset issues. They are safety issues. Your nervous system doesn't feel safe holding it. That's where we begin.</div></div>
 </div>
 
 <!-- ═══ 02 ═══ -->
@@ -477,8 +338,7 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   <div class="sec-num">02</div>
   <h2 class="sec-title">Common Money <em>Blocks</em></h2>
   <p class="sec-lead">I associate money with stress or responsibility. Which of these applies to you right now? Select all that resonate.</p>
-
-  <div class="card" id="blocksList">
+  <div class="card">
     <div class="eyebrow">Select Your Blocks</div>
     <div class="block-item" data-block="0"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I feel guilt when I want more</span></div>
     <div class="block-item" data-block="1"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I believe wanting wealth makes me "selfish"</span></div>
@@ -489,52 +349,34 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
     <div class="block-item" data-block="6"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I rush to spend money before it disappears</span></div>
     <div class="block-item" data-block="7"><div class="block-chk"><span class="chk-mark">✓</span></div><span class="block-text">I undercharge because I fear being rejected</span></div>
   </div>
-
   <div class="card">
     <div class="eyebrow eyebrow-orchid">Where Were These Inherited?</div>
     <p style="font-size:13px;color:var(--txts);margin-bottom:12px;line-height:1.65">Trace the root. Most money blocks were handed down — not yours to keep.</p>
-    <textarea id="inheritedNotes" rows="3" placeholder="Who taught you this about money? A parent, experience, culture?..."></textarea>
+    <textarea id="inheritedNotes" rows="3" placeholder="Who taught you this about money?..."></textarea>
   </div>
-
-  <!-- VIDEO -->
-  <div class="card card-stars">
-    <div class="stars"></div>
+  <div class="card">
+    <div class="stars" style="opacity:0.2"></div>
     <div style="position:relative;z-index:1">
       <div class="eyebrow">Video · Money Belief System</div>
       <div id="videoSlot1" class="video-slot">
         <div style="font-size:34px;margin-bottom:12px">🎬</div>
         <div class="video-slot-title">Money Belief System</div>
         <div class="video-slot-desc">Add your YouTube URL below to embed your video here.</div>
-        <div style="margin-top:14px">
-          <input type="text" id="vidUrl1" placeholder="Paste YouTube URL..." />
-          <button class="vid-load-btn" onclick="loadVideo('vidUrl1','vidEmbed1','videoSlot1')">Load Video</button>
-        </div>
+        <div style="margin-top:14px"><input type="text" id="vidUrl1" placeholder="Paste YouTube URL..."/><button class="vid-load-btn" onclick="loadVideo('vidUrl1','vidEmbed1','videoSlot1')">Load Video</button></div>
       </div>
       <iframe id="vidEmbed1" class="video-embed" allowfullscreen></iframe>
     </div>
   </div>
-
   <div class="release-box">
-    <div class="stars"></div>
+    <div class="stars" style="opacity:0.15"></div>
     <div style="position:relative;z-index:1">
       <div class="eyebrow" style="margin-bottom:12px">Section 3 · The Clearing Exercise</div>
       <div style="font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--detail);margin-bottom:12px">The Release Statement — Write + Speak</div>
-      <div class="release-line">
-        "I release the belief that money is unsafe.<br>
-        I release the belief that I must struggle to be worthy.<br>
-        I release the belief that ease makes me lazy or ungrateful."
-      </div>
-      <div style="margin-top:16px;font-size:13px;font-style:italic;color:var(--txt);line-height:1.7">
-        <strong style="color:var(--accentlt)">Then:</strong> "I choose to build a relationship with money based on trust, neutrality, and self-respect."
-      </div>
-      <div style="margin-top:16px">
-        <div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Write your own release statement:</div>
-        <textarea id="releaseWrite" rows="3" placeholder="I release the belief that..."></textarea>
-      </div>
+      <div class="release-line">"I release the belief that money is unsafe.<br>I release the belief that I must struggle to be worthy.<br>I release the belief that ease makes me lazy or ungrateful."</div>
+      <div style="margin-top:16px;font-size:13px;font-style:italic;color:var(--txt);line-height:1.7"><strong style="color:var(--accentlt)">Then:</strong> "I choose to build a relationship with money based on trust, neutrality, and self-respect."</div>
+      <div style="margin-top:16px"><div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Write your own release statement:</div><textarea id="releaseWrite" rows="3" placeholder="I release the belief that..."></textarea></div>
       <button class="burn-btn" id="burnBtn" onclick="burnIt()">🔥 Write It + Release It — POOF</button>
-      <div id="burnMsg" style="display:none;margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accentlt);text-align:center">
-        ✦ Released. You can now move into a new realm of abundance. ✦
-      </div>
+      <div id="burnMsg" style="display:none;margin-top:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accentlt);text-align:center">✦ Released. You can now move into a new realm of abundance. ✦</div>
     </div>
   </div>
 </div>
@@ -544,45 +386,29 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   <div class="sec-num">03</div>
   <h2 class="sec-title">Daily Money <em>Affirmations</em></h2>
   <p class="sec-lead">Do this along with the Magnificent Money Manifestation Track. Pick 3 per day. Consistency over volume.</p>
-
-  <div class="card card-stars">
-    <div class="stars"></div>
-    <div style="position:relative;z-index:1">
-      <div class="pick-counter">You've picked <span id="pickCount">0</span>/3 for today. <span id="pickDone" style="color:var(--accentlt);display:none">✦ Perfect, Queen.</span></div>
-      <div id="todayCard" class="today-card">
-        <div class="stars"></div>
-        <div style="position:relative;z-index:1;font-family:'Montserrat',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>
-      </div>
-    </div>
+  <div class="card">
+    <div class="pick-counter">You've picked <span id="pickCount">0</span>/3 for today. <span id="pickDone" style="color:var(--accentlt);display:none">✦ Perfect, Queen.</span></div>
+    <div id="todayCard" class="today-card"><div class="stars" style="opacity:0.15"></div><div style="position:relative;z-index:1;font-family:'Montserrat',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div></div>
   </div>
-
   <div style="margin-bottom:20px">
     <div class="aff-set-label">Daily Core (Morning or Night)</div>
-    <div id="affCore">
-      <div class="aff-item" data-aff="Money is safe with me."><div class="aff-dot"></div>Money is safe with me.</div>
-      <div class="aff-item" data-aff="I am calm when I receive."><div class="aff-dot"></div>I am calm when I receive.</div>
-      <div class="aff-item" data-aff="I trust myself to handle more."><div class="aff-dot"></div>I trust myself to handle more.</div>
-      <div class="aff-item" data-aff="I do not rush money. Money meets me."><div class="aff-dot"></div>I do not rush money. Money meets me.</div>
-      <div class="aff-item" data-aff="Wealth expands when I am regulated."><div class="aff-dot"></div>Wealth expands when I am regulated.</div>
-      <div class="aff-item" data-aff="I am available for ease."><div class="aff-dot"></div>I am available for ease.</div>
-      <div class="aff-item" data-aff="I allow money to stay."><div class="aff-dot"></div>I allow money to stay.</div>
-    </div>
+    <div class="aff-item" data-aff="Money is safe with me."><div class="aff-dot"></div>Money is safe with me.</div>
+    <div class="aff-item" data-aff="I am calm when I receive."><div class="aff-dot"></div>I am calm when I receive.</div>
+    <div class="aff-item" data-aff="I trust myself to handle more."><div class="aff-dot"></div>I trust myself to handle more.</div>
+    <div class="aff-item" data-aff="I do not rush money. Money meets me."><div class="aff-dot"></div>I do not rush money. Money meets me.</div>
+    <div class="aff-item" data-aff="Wealth expands when I am regulated."><div class="aff-dot"></div>Wealth expands when I am regulated.</div>
+    <div class="aff-item" data-aff="I am available for ease."><div class="aff-dot"></div>I am available for ease.</div>
+    <div class="aff-item" data-aff="I allow money to stay."><div class="aff-dot"></div>I allow money to stay.</div>
   </div>
-
   <div>
     <div class="aff-set-label" style="color:var(--orchid)">Identity Level (Read Slowly)</div>
-    <div id="affIdentity">
-      <div class="aff-item" data-aff="I am a woman who holds wealth with grace."><div class="aff-dot"></div>I am a woman who holds wealth with grace.</div>
-      <div class="aff-item" data-aff="My nervous system is calibrated for abundance."><div class="aff-dot"></div>My nervous system is calibrated for abundance.</div>
-      <div class="aff-item" data-aff="I don't chase money. I create capacity for it."><div class="aff-dot"></div>I don't chase money. I create capacity for it.</div>
-      <div class="aff-item" data-aff="I am available for aligned opportunities."><div class="aff-dot"></div>I am available for aligned opportunities.</div>
-      <div class="aff-item" data-aff="I receive without apology."><div class="aff-dot"></div>I receive without apology.</div>
-    </div>
+    <div class="aff-item" data-aff="I am a woman who holds wealth with grace."><div class="aff-dot"></div>I am a woman who holds wealth with grace.</div>
+    <div class="aff-item" data-aff="My nervous system is calibrated for abundance."><div class="aff-dot"></div>My nervous system is calibrated for abundance.</div>
+    <div class="aff-item" data-aff="I don't chase money. I create capacity for it."><div class="aff-dot"></div>I don't chase money. I create capacity for it.</div>
+    <div class="aff-item" data-aff="I am available for aligned opportunities."><div class="aff-dot"></div>I am available for aligned opportunities.</div>
+    <div class="aff-item" data-aff="I receive without apology."><div class="aff-dot"></div>I receive without apology.</div>
   </div>
-
-  <div class="pullquote">
-    <div class="pullquote-text">Consistency over volume. Three affirmations felt deeply is worth more than twelve rushed ones.</div>
-  </div>
+  <div class="pullquote"><div class="pullquote-text">Consistency over volume. Three affirmations felt deeply is worth more than twelve rushed ones.</div></div>
 </div>
 
 <!-- ═══ 04 ═══ -->
@@ -590,7 +416,6 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   <div class="sec-num">04</div>
   <h2 class="sec-title">Ritual Power Days <em>2026</em></h2>
   <p class="sec-lead">You don't need every cosmic event — just the ones that matter. Practical, not woo woo chaos.</p>
-
   <div class="cal-legend">
     <div class="leg-item"><div class="leg-dot" style="background:#7B68EE"></div>New Moon</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--orchid)"></div>Full Moon</div>
@@ -599,78 +424,40 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
     <div class="leg-item"><div class="leg-dot" style="background:#C9A84C"></div>Power Day</div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--accentlt)"></div>Solstice</div>
   </div>
-
   <div class="card">
     <div class="eyebrow">Monthly Anchors — Every Month</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
-      <div style="padding:18px;background:rgba(123,104,238,0.09);border:1px solid rgba(123,104,238,0.28);border-radius:12px;text-align:center">
-        <div style="font-size:22px;margin-bottom:7px">🌑</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--txt)">New Moons</div>
-        <div style="font-size:11px;color:var(--txtm);margin-top:5px;font-style:italic">Intention + money goals</div>
-      </div>
-      <div style="padding:18px;background:rgba(198,182,205,0.08);border:1px solid rgba(198,182,205,0.22);border-radius:12px;text-align:center">
-        <div style="font-size:22px;margin-bottom:7px">🌕</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--txt)">Full Moons</div>
-        <div style="font-size:11px;color:var(--txtm);margin-top:5px;font-style:italic">Release + clearing scarcity</div>
-      </div>
+      <div style="padding:18px;background:rgba(123,104,238,0.08);border:1px solid rgba(123,104,238,0.25);border-radius:12px;text-align:center"><div style="font-size:22px;margin-bottom:7px">🌑</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--txt)">New Moons</div><div style="font-size:11px;color:var(--txtm);margin-top:5px;font-style:italic">Intention + money goals</div></div>
+      <div style="padding:18px;background:rgba(115,57,96,0.07);border:1px solid var(--bdr);border-radius:12px;text-align:center"><div style="font-size:22px;margin-bottom:7px">🌕</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--txt)">Full Moons</div><div style="font-size:11px;color:var(--txtm);margin-top:5px;font-style:italic">Release + clearing scarcity</div></div>
     </div>
   </div>
-
   <div class="cal-month-label">January</div>
-  <div class="cal-grid">
-    <div class="cal-event portal"><div class="cal-event-date">🔥 JAN 1, 2026</div><div class="cal-event-name">Year Shift</div><div class="cal-event-desc">Identity reset, financial intention setting</div></div>
-  </div>
-
+  <div class="cal-grid"><div class="cal-event portal"><div class="cal-event-date">🔥 JAN 1, 2026</div><div class="cal-event-name">Year Shift</div><div class="cal-event-desc">Identity reset, financial intention setting</div></div></div>
   <div class="cal-month-label">February</div>
-  <div class="cal-grid">
-    <div class="cal-event portal"><div class="cal-event-date">🌑 FEB 17, 2026</div><div class="cal-event-name">Lunar New Year Reset</div><div class="cal-event-desc">Fire Horse energy · Biggest money reset portal of the year</div></div>
-  </div>
-
+  <div class="cal-grid"><div class="cal-event portal"><div class="cal-event-date">🌑 FEB 17, 2026</div><div class="cal-event-name">Lunar New Year Reset</div><div class="cal-event-desc">Fire Horse energy · Biggest money reset portal of the year</div></div></div>
   <div class="cal-month-label">March</div>
   <div class="cal-grid">
     <div class="cal-event eclipse"><div class="cal-event-date">✨ MAR 14, 2026</div><div class="cal-event-name">Lunar Eclipse</div><div class="cal-event-desc">Accelerated timelines · Release what no longer serves</div></div>
     <div class="cal-event eclipse"><div class="cal-event-date">✨ MAR 29, 2026</div><div class="cal-event-name">Solar Eclipse</div><div class="cal-event-desc">New beginnings · Set powerful financial intentions</div></div>
   </div>
-
   <div class="cal-month-label">June</div>
-  <div class="cal-grid">
-    <div class="cal-event power"><div class="cal-event-date">💛 JUN 6, 2026</div><div class="cal-event-name">6/6 Power Day</div><div class="cal-event-desc">Alignment + amplification</div></div>
-  </div>
-
+  <div class="cal-grid"><div class="cal-event power"><div class="cal-event-date">💛 JUN 6, 2026</div><div class="cal-event-name">6/6 Power Day</div><div class="cal-event-desc">Alignment + amplification</div></div></div>
   <div class="cal-month-label">August</div>
-  <div class="cal-grid">
-    <div class="cal-event portal" style="grid-column:1/-1"><div class="cal-event-date">🦁 AUG 8, 2026 (8/8)</div><div class="cal-event-name">Lion's Gate Portal</div><div class="cal-event-desc">Money + leadership + self-worth · Charge more, claim wealth without apology</div></div>
-  </div>
-
+  <div class="cal-grid"><div class="cal-event portal" style="grid-column:1/-1"><div class="cal-event-date">🦁 AUG 8, 2026 (8/8)</div><div class="cal-event-name">Lion's Gate Portal</div><div class="cal-event-desc">Money + leadership + self-worth · Charge more, claim wealth without apology</div></div></div>
   <div class="cal-month-label">September</div>
   <div class="cal-grid">
     <div class="cal-event eclipse"><div class="cal-event-date">✨ SEP 7, 2026</div><div class="cal-event-name">Lunar Eclipse</div><div class="cal-event-desc">Release survival patterns, accelerate timelines</div></div>
     <div class="cal-event eclipse"><div class="cal-event-date">✨ SEP 21, 2026</div><div class="cal-event-name">Solar Eclipse</div><div class="cal-event-desc">New identity anchoring · Claim your next level</div></div>
     <div class="cal-event power"><div class="cal-event-date">💛 SEP 9, 2026</div><div class="cal-event-name">9/9 Power Day</div><div class="cal-event-desc">Completion + transition · Release the old chapter</div></div>
   </div>
-
   <div class="cal-month-label">November</div>
-  <div class="cal-grid">
-    <div class="cal-event power"><div class="cal-event-date">💛 NOV 11, 2026</div><div class="cal-event-name">11/11 Portal</div><div class="cal-event-desc">Master number · Alignment + amplification</div></div>
-  </div>
-
+  <div class="cal-grid"><div class="cal-event power"><div class="cal-event-date">💛 NOV 11, 2026</div><div class="cal-event-name">11/11 Portal</div><div class="cal-event-desc">Master number · Alignment + amplification</div></div></div>
   <div class="cal-month-label">December</div>
-  <div class="cal-grid">
-    <div class="cal-event solstice" style="grid-column:1/-1"><div class="cal-event-date">🌿 DEC 21, 2026</div><div class="cal-event-name">Winter Solstice</div><div class="cal-event-desc">Year-end integration · Review money growth, release survival patterns, set 2027 tone</div></div>
-  </div>
-
+  <div class="cal-grid"><div class="cal-event solstice" style="grid-column:1/-1"><div class="cal-event-date">🌿 DEC 21, 2026</div><div class="cal-event-name">Winter Solstice</div><div class="cal-event-desc">Year-end integration · Review money growth, release survival patterns, set 2027 tone</div></div></div>
   <div class="card" style="margin-top:16px">
     <div class="eyebrow eyebrow-detail">Every 8th of the Month</div>
-    <ul class="bullet-list" style="margin-bottom:14px">
-      <li>Money, authority, abundance — mark these in your calendar now</li>
-      <li>Set intentions on New Moons <strong style="color:var(--accentlt)">lightly</strong></li>
-      <li>Release on Full Moons <strong style="color:var(--accentlt)">heavily</strong></li>
-      <li>These are non-negotiable ritual days</li>
-    </ul>
-    <div style="margin-top:12px">
-      <div style="font-size:11px;font-weight:600;color:var(--accentlt);margin-bottom:7px">Your notes for this month's ritual:</div>
-      <textarea id="ritualNotes" rows="2" placeholder="What are you setting intention on this cycle?"></textarea>
-    </div>
+    <ul class="bullet-list" style="margin-bottom:14px"><li>Money, authority, abundance — mark these now</li><li>Set intentions on New Moons <strong style="color:var(--accentlt)">lightly</strong></li><li>Release on Full Moons <strong style="color:var(--accentlt)">heavily</strong></li></ul>
+    <textarea id="ritualNotes" rows="2" placeholder="What are you setting intention on this cycle?"></textarea>
   </div>
 </div>
 
@@ -679,49 +466,31 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   <div class="sec-num">05</div>
   <h2 class="sec-title">The Money Manifestation <em>Track</em></h2>
   <p class="sec-lead">Money Nervous System Recalibration — Private Audio Rituals. This meditation is designed to shift your subconscious relationship with money — not force manifestation, but make receiving feel safe.</p>
-
-  <div class="card card-stars">
-    <div class="stars"></div>
-    <div class="glow"></div>
+  <div class="card">
+    <div class="stars" style="opacity:0.2"></div>
     <div style="position:relative;z-index:1">
       <div class="eyebrow">Magnificent Money Manifestation</div>
       <div id="videoSlot2" class="video-slot">
         <div style="font-size:34px;margin-bottom:12px">🎶</div>
         <div class="video-slot-title">Magnificent Money Manifestation</div>
         <div class="video-slot-desc">Listen 3x a day for a week straight.</div>
-        <div style="margin-top:14px">
-          <input type="text" id="vidUrl2" placeholder="Paste YouTube URL..." />
-          <button class="vid-load-btn" onclick="loadVideo('vidUrl2','vidEmbed2','videoSlot2')">Load Video</button>
-        </div>
+        <div style="margin-top:14px"><input type="text" id="vidUrl2" placeholder="Paste YouTube URL..."/><button class="vid-load-btn" onclick="loadVideo('vidUrl2','vidEmbed2','videoSlot2')">Load Video</button></div>
       </div>
       <iframe id="vidEmbed2" class="video-embed" allowfullscreen></iframe>
     </div>
   </div>
-
   <div class="card">
     <div class="eyebrow eyebrow-orchid">Instructions</div>
-    <ul class="bullet-list" style="margin-bottom:14px">
-      <li>Listen with headphones when possible</li>
-      <li>Do not multitask during the first listen</li>
-    </ul>
+    <ul class="bullet-list" style="margin-bottom:14px"><li>Listen with headphones when possible</li><li>Do not multitask during the first listen</li></ul>
     <div style="font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--detail);margin-bottom:10px">Use during:</div>
-    <ul class="bullet-list">
-      <li>New Moons &amp; Full Moons</li>
-      <li>Money journaling</li>
-      <li>Before sleep</li>
-      <li>When you wake up every day</li>
-    </ul>
+    <ul class="bullet-list"><li>New Moons &amp; Full Moons</li><li>Money journaling</li><li>Before sleep</li><li>When you wake up every day</li></ul>
   </div>
-
-  <div class="pullquote">
-    <div class="pullquote-text">That distinction = credibility. Not forcing manifestation — making receiving feel safe.</div>
-  </div>
-
+  <div class="pullquote"><div class="pullquote-text">That distinction = credibility. Not forcing manifestation — making receiving feel safe.</div></div>
   <div class="card">
     <div class="eyebrow eyebrow-detail">Track Your Listening Streak</div>
     <p style="font-size:12px;color:var(--txtm);margin-bottom:14px;line-height:1.6">3x a day for a week straight. Tap each day you complete it.</p>
     <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px" id="streakGrid"></div>
-    <div style="margin-top:14px;font-size:11px;color:var(--txtm)">Notes on what you notice after each session:</div>
+    <div style="margin-top:14px;font-size:11px;color:var(--txtm)">Notes on what you notice:</div>
     <textarea id="meditNotes" rows="2" placeholder="Shifts, sensations, insights..." style="margin-top:8px"></textarea>
   </div>
 </div>
@@ -731,97 +500,42 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
   <div class="sec-num">06</div>
   <h2 class="sec-title">Integration: Becoming the Woman <em>Who Holds Wealth</em></h2>
   <p class="sec-lead">Clearing money blocks is powerful. Rewriting your relationship with money is necessary. But abundance doesn't stabilize until your identity catches up.</p>
-
   <div class="card">
     <div class="eyebrow">Wealth Is Not a Moment. It's a Capacity.</div>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:14px">Many women can manifest money once. A bonus. A surge. A good month. But then:</p>
-    <ul class="bullet-list" style="margin-bottom:14px">
-      <li>they feel pressure</li>
-      <li>they rush decisions</li>
-      <li>they overspend or undercharge</li>
-      <li>they shrink or self-sabotage</li>
-    </ul>
+    <ul class="bullet-list" style="margin-bottom:14px"><li>they feel pressure</li><li>they rush decisions</li><li>they overspend or undercharge</li><li>they shrink or self-sabotage</li></ul>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:12px">Not because they're irresponsible — but because their nervous system hasn't stabilized at that level yet.</p>
     <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18px;color:var(--accentlt);margin-bottom:10px">Wealth requires capacity, not just desire.</div>
-    <ul class="bullet-list">
-      <li>make calm decisions</li>
-      <li>delay reaction</li>
-      <li>trust yourself</li>
-      <li>allow money to stay</li>
-    </ul>
+    <ul class="bullet-list"><li>make calm decisions</li><li>delay reaction</li><li>trust yourself</li><li>allow money to stay</li></ul>
   </div>
-
-  <div class="pullquote">
-    <div class="pullquote-text">Money doesn't stay with the woman who wants it. It stays with the woman who feels safe, steady, and self-led while holding it.</div>
-  </div>
-
-  <!-- EMBODIMENT -->
-  <div class="card card-stars">
-    <div class="stars"></div>
-    <div class="glow"></div>
+  <div class="pullquote"><div class="pullquote-text">Money doesn't stay with the woman who wants it. It stays with the woman who feels safe, steady, and self-led while holding it.</div></div>
+  <div class="card">
+    <div class="stars" style="opacity:0.2"></div>
     <div style="position:relative;z-index:1">
       <div class="eyebrow eyebrow-detail">Guided Embodiment Practice</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--txt);margin-bottom:16px">Stabilizing Your Next Level</div>
-
-      <div id="breathStep0" class="breath-box">
-        <div class="breath-prompt">Take a breath.<br>Place one hand on your chest.</div>
-        <button class="breath-btn" onclick="nextBreath(1)">I'm here ✦</button>
-      </div>
-      <div id="breathStep1" class="breath-box" style="display:none">
-        <div class="breath-prompt">Ask yourself:<br><span style="font-size:14px;color:var(--accentlt)">How does my body feel when I imagine holding significantly more money?<br><br>Where do I tense?<br>What part of me feels alert or cautious?</span></div>
-        <textarea id="embodimentReflect" rows="3" placeholder="Write what comes up..." style="text-align:left;margin:14px 0 0"></textarea>
-        <button class="breath-btn" onclick="nextBreath(2)" style="margin-top:12px">Continue ✦</button>
-      </div>
-      <div id="breathStep2" class="breath-box" style="display:none">
-        <div class="breath-prompt" style="margin-bottom:8px">Now repeat slowly, out loud if you can:</div>
-        <div class="aff-speak">
-          I am safe holding more.<br>
-          I trust myself at higher levels.<br>
-          I can lead myself through expansion.<br>
-          Wealth does not destabilize me.<br>
-          It supports me.
-        </div>
-        <button class="breath-btn" onclick="nextBreath(3)">I've spoken these ✦</button>
-      </div>
-      <div id="breathStep3" class="breath-box" style="display:none;background:linear-gradient(135deg,rgba(115,57,96,0.18),rgba(179,106,162,0.1))">
-        <div style="font-size:28px;margin-bottom:12px">✦</div>
-        <div class="breath-prompt" style="color:var(--accentlt)">Let your body settle before moving on.<br>This is how identity integrates.</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--orchid);margin-top:10px">you are...</div>
-        <button class="breath-btn" onclick="nextBreath(0)" style="margin-top:16px;background:rgba(115,57,96,0.25);color:var(--accentlt);border:1.5px solid var(--accent)">Begin Again</button>
-      </div>
+      <div id="breathStep0" class="breath-box"><div class="breath-prompt">Take a breath.<br>Place one hand on your chest.</div><button class="breath-btn" onclick="nextBreath(1)">I'm here ✦</button></div>
+      <div id="breathStep1" class="breath-box" style="display:none"><div class="breath-prompt">Ask yourself:<br><span style="font-size:14px;color:var(--accentlt)">How does my body feel imagining significantly more money?<br><br>Where do I tense?<br>What part feels alert or cautious?</span></div><textarea id="embodimentReflect" rows="3" placeholder="Write what comes up..." style="text-align:left;margin:14px 0 0"></textarea><button class="breath-btn" onclick="nextBreath(2)" style="margin-top:12px">Continue ✦</button></div>
+      <div id="breathStep2" class="breath-box" style="display:none"><div class="breath-prompt" style="margin-bottom:8px">Now repeat slowly, out loud if you can:</div><div class="aff-speak">I am safe holding more.<br>I trust myself at higher levels.<br>I can lead myself through expansion.<br>Wealth does not destabilize me.<br>It supports me.</div><button class="breath-btn" onclick="nextBreath(3)">I've spoken these ✦</button></div>
+      <div id="breathStep3" class="breath-box" style="display:none"><div style="font-size:28px;margin-bottom:12px">✦</div><div class="breath-prompt" style="color:var(--accentlt)">Let your body settle.<br>This is how identity integrates.</div><div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--orchid);margin-top:10px">you are...</div><button class="breath-btn" onclick="nextBreath(0)" style="margin-top:16px;background:rgba(115,57,96,0.2);color:var(--accentlt);border:1.5px solid var(--accent)">Begin Again</button></div>
     </div>
   </div>
-
   <div class="card">
     <div class="eyebrow eyebrow-orchid">Wealth is Self-Leadership</div>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.8;margin-bottom:14px">At this stage, money is no longer the teacher. You are.</p>
-    <div style="font-size:13px;color:var(--accentlt);font-weight:600;margin-bottom:9px">You decide:</div>
-    <ul class="bullet-list" style="margin-bottom:14px">
-      <li>what feels aligned</li>
-      <li>what is worth your energy</li>
-      <li>what standards you keep</li>
-      <li>what you no longer tolerate</li>
-    </ul>
+    <ul class="bullet-list" style="margin-bottom:14px"><li>what feels aligned</li><li>what is worth your energy</li><li>what standards you keep</li><li>what you no longer tolerate</li></ul>
     <div class="divider"></div>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.8">Money responds to <strong style="color:var(--accentlt)">leadership</strong>. Not control. Not force. Not anxiety. When you lead yourself well, money follows cleanly.</p>
   </div>
-
-  <div class="card" style="background:linear-gradient(135deg,rgba(115,57,96,0.12),rgba(179,106,162,0.07));border-color:rgba(179,106,162,0.28)">
+  <div class="card" style="background:var(--int-card-bg);border-color:var(--bdrb)">
     <div class="eyebrow eyebrow-detail">From Attraction to Availability</div>
     <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--txt);margin-bottom:12px">You no longer need to chase money.</div>
-    <ul class="bullet-list" style="margin-bottom:14px">
-      <li>showing up consistently</li>
-      <li>making clear decisions</li>
-      <li>following through</li>
-      <li>allowing support</li>
-      <li>resting without guilt</li>
-    </ul>
+    <ul class="bullet-list" style="margin-bottom:14px"><li>showing up consistently</li><li>making clear decisions</li><li>following through</li><li>allowing support</li><li>resting without guilt</li></ul>
     <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accentlt);margin:12px 0">This is not passive. This is mature. This is abundance that lasts.</div>
     <div class="divider"></div>
     <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;color:var(--txt);margin-bottom:10px">You are not "becoming wealthy someday."</div>
     <p style="font-size:13.5px;color:var(--txts);line-height:1.9">You are becoming the woman who can hold it.<br>Calmly. Cleanly. Without self-betrayal.<br><br>This is the art of receiving abundance.<br>And this is where the work becomes your life.</p>
   </div>
-
   <div class="card">
     <div class="eyebrow">Integration Notes</div>
     <textarea id="integrationNotes" rows="4" placeholder="What's shifting for you? What are you releasing? What are you claiming?"></textarea>
@@ -834,7 +548,7 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 <div class="save-bar">
   <div class="save-status" id="saveStatus">✦ All responses saved locally</div>
   <div class="nav-btns-bot">
-    <button class="nav-b" id="prevBtn" onclick="changeSection(-1)">← Prev</button>
+    <button class="nav-b" onclick="changeSection(-1)">← Prev</button>
     <button class="nav-b primary" id="nextBtn" onclick="changeSection(1)">Next →</button>
   </div>
 </div>
@@ -842,7 +556,6 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 <!-- FOOTER -->
 <div class="footer">
   <div class="stars"></div>
-  <div class="glow"></div>
   <div class="footer-inner">
     <div class="footer-script">She's already inside you.</div>
     <div class="footer-title">The Art of Receiving <em>Abundance</em></div>
@@ -854,133 +567,126 @@ textarea::placeholder,input::placeholder{color:var(--txtq)}
 </div><!-- /page-wrap -->
 
 <script>
-// SECTIONS
-let cur=0;
-const secs=document.querySelectorAll('.section');
-const navBtns=document.querySelectorAll('.nav-btn');
+// ── MODE TOGGLE ──
+let isDark = localStorage.getItem('ba_mode') !== 'light';
+function applyMode(){
+  const body = document.body;
+  const track = document.getElementById('toggleTrack');
+  const thumb = document.getElementById('toggleThumb');
+  const label = document.getElementById('modeLabel');
+  if(isDark){
+    body.classList.remove('light');
+    track.classList.remove('on');
+    thumb.textContent = '🌙';
+    label.textContent = 'Dark';
+  } else {
+    body.classList.add('light');
+    track.classList.add('on');
+    thumb.textContent = '☀️';
+    label.textContent = 'Light';
+  }
+  localStorage.setItem('ba_mode', isDark ? 'dark' : 'light');
+}
+function toggleMode(){ isDark = !isDark; applyMode(); }
+applyMode();
+
+// ── SECTIONS ──
+let cur = 0;
+const secs = document.querySelectorAll('.section');
+const navBtns = document.querySelectorAll('.nav-btn');
 function showSection(n){
-  secs[cur].classList.remove('active');navBtns[cur].classList.remove('active');
-  cur=n;secs[cur].classList.add('active');navBtns[cur].classList.add('active');
-  document.getElementById('progFill').style.width=((cur+1)/6*100)+'%';
-  document.getElementById('progCount').textContent=(cur+1)+' / 6';
-  document.getElementById('prevBtn').disabled=cur===0;
-  document.getElementById('nextBtn').textContent=cur===5?'Complete ✦':'Next →';
+  secs[cur].classList.remove('active'); navBtns[cur].classList.remove('active');
+  cur = n; secs[cur].classList.add('active'); navBtns[cur].classList.add('active');
+  document.getElementById('progFill').style.width = ((cur+1)/6*100)+'%';
+  document.getElementById('progCount').textContent = (cur+1)+' / 6';
+  document.getElementById('nextBtn').textContent = cur===5 ? 'Complete ✦' : 'Next →';
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function changeSection(d){const n=cur+d;if(n>=0&&n<6)showSection(n);}
-navBtns.forEach((b,i)=>b.addEventListener('click',()=>showSection(i)));
+function changeSection(d){ const n=cur+d; if(n>=0&&n<6) showSection(n); }
+navBtns.forEach((b,i) => b.addEventListener('click',()=>showSection(i)));
 
-// BODY CHECK
-document.querySelectorAll('.body-zone').forEach(z=>{
-  z.addEventListener('click',()=>{z.classList.toggle('felt');saveAll();});
+// ── BODY CHECK ──
+document.querySelectorAll('.body-zone').forEach(z => {
+  z.addEventListener('click',()=>{ z.classList.toggle('felt'); saveAll(); });
 });
 
-// BLOCKS
-document.querySelectorAll('.block-item').forEach(b=>{
-  b.addEventListener('click',()=>{b.classList.toggle('checked');saveAll();});
+// ── BLOCKS ──
+document.querySelectorAll('.block-item').forEach(b => {
+  b.addEventListener('click',()=>{ b.classList.toggle('checked'); saveAll(); });
 });
 
-// BURN
+// ── BURN ──
 function burnIt(){
-  const btn=document.getElementById('burnBtn');
-  const msg=document.getElementById('burnMsg');
-  btn.style.animation='burnFlash .6s ease';
-  setTimeout(()=>{btn.textContent='🔥 Released';btn.disabled=true;msg.style.display='block';saveAll();},600);
+  const btn = document.getElementById('burnBtn');
+  btn.style.animation = 'burnFlash .6s ease';
+  setTimeout(()=>{ btn.textContent='🔥 Released'; btn.disabled=true; document.getElementById('burnMsg').style.display='block'; saveAll(); }, 600);
 }
 
-// AFFIRMATIONS
-let picked=[];
-document.querySelectorAll('.aff-item').forEach(a=>{
+// ── AFFIRMATIONS ──
+let picked = [];
+document.querySelectorAll('.aff-item').forEach(a => {
   a.addEventListener('click',()=>{
-    const txt=a.dataset.aff;
-    if(a.classList.contains('picked')){
-      a.classList.remove('picked');picked=picked.filter(x=>x!==txt);
-    } else {
-      if(picked.length>=3){alert('Pick only 3 for today, Queen. Deselect one first ✦');return;}
-      a.classList.add('picked');picked.push(txt);
-    }
-    document.getElementById('pickCount').textContent=picked.length;
-    document.getElementById('pickDone').style.display=picked.length===3?'inline':'none';
-    const card=document.getElementById('todayCard');
-    const inner=card.querySelector('div[style*="z-index"]')||card;
-    if(picked.length){
-      card.innerHTML='<div class="stars"></div><div style="position:relative;z-index:1;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.8">'+picked.map(t=>`✦ ${t}`).join('<br>')+'</div>';
-    } else {
-      card.innerHTML='<div class="stars"></div><div style="position:relative;z-index:1;font-family:\'Montserrat\',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>';
-    }
+    const txt = a.dataset.aff;
+    if(a.classList.contains('picked')){ a.classList.remove('picked'); picked=picked.filter(x=>x!==txt); }
+    else { if(picked.length>=3){ alert('Pick only 3 for today, Queen ✦'); return; } a.classList.add('picked'); picked.push(txt); }
+    document.getElementById('pickCount').textContent = picked.length;
+    document.getElementById('pickDone').style.display = picked.length===3 ? 'inline' : 'none';
+    const card = document.getElementById('todayCard');
+    card.innerHTML = picked.length
+      ? '<div class="stars" style="opacity:0.15"></div><div style="position:relative;z-index:1;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.8">'+picked.map(t=>`✦ ${t}`).join('<br>')+'</div>'
+      : '<div class="stars" style="opacity:0.15"></div><div style="position:relative;z-index:1;font-family:\'Montserrat\',sans-serif;font-style:normal;font-size:12px;color:var(--txtq)">Your 3 affirmations for today will appear here ✦</div>';
     saveAll();
   });
 });
 
-// STREAK
+// ── STREAK ──
 const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-const streakGrid=document.getElementById('streakGrid');
-let streak=JSON.parse(localStorage.getItem('ba_streak')||'{}');
+let streak = JSON.parse(localStorage.getItem('ba_streak')||'{}');
+const sg = document.getElementById('streakGrid');
 DAYS.forEach((d,i)=>{
   const el=document.createElement('div');
   el.className='streak-day'+(streak[i]?' done':'');
   el.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✦':'○'}</div>${d}`;
-  el.addEventListener('click',()=>{
-    streak[i]=!streak[i];
-    el.className='streak-day'+(streak[i]?' done':'');
-    el.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✦':'○'}</div>${d}`;
-    localStorage.setItem('ba_streak',JSON.stringify(streak));
-  });
-  streakGrid.appendChild(el);
+  el.addEventListener('click',()=>{ streak[i]=!streak[i]; el.className='streak-day'+(streak[i]?' done':''); el.innerHTML=`<div style="font-size:16px;margin-bottom:4px">${streak[i]?'✦':'○'}</div>${d}`; localStorage.setItem('ba_streak',JSON.stringify(streak)); });
+  sg.appendChild(el);
 });
 
-// EMBODIMENT
-function nextBreath(s){for(let i=0;i<4;i++){const el=document.getElementById('breathStep'+i);if(el)el.style.display=i===s?'block':'none';}}
+// ── EMBODIMENT ──
+function nextBreath(s){ for(let i=0;i<4;i++){ const el=document.getElementById('breathStep'+i); if(el) el.style.display=i===s?'block':'none'; } }
 
-// VIDEO LOADER
-const HARDCODED={'vidUrl1':'https://youtu.be/7LkWleRL7ig','vidUrl2':'https://youtu.be/hpPjY5H11Bs'};
+// ── VIDEO ──
+const HVIDS={'vidUrl1':'https://youtu.be/7LkWleRL7ig','vidUrl2':'https://youtu.be/hpPjY5H11Bs'};
 function loadVideo(inputId,embedId,slotId){
-  const url=document.getElementById(inputId).value.trim()||HARDCODED[inputId]||'';
+  const url=(document.getElementById(inputId).value.trim()||HVIDS[inputId]||'');
   const m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  if(!m){alert('Please enter a valid YouTube URL');return;}
-  const iframe=document.getElementById(embedId);
-  iframe.src=`https://www.youtube.com/embed/${m[1]}`;
-  iframe.style.display='block';
+  if(!m){ alert('Please enter a valid YouTube URL'); return; }
+  document.getElementById(embedId).src=`https://www.youtube.com/embed/${m[1]}`;
+  document.getElementById(embedId).style.display='block';
   document.getElementById(slotId).style.display='none';
   localStorage.setItem('ba_vid_'+inputId,url);
 }
 
-// SAVE / LOAD
+// ── SAVE / LOAD ──
 const IDS=['j1','j2','j3','j4','bodyNotes','inheritedNotes','releaseWrite','ritualNotes','meditNotes','embodimentReflect','integrationNotes'];
 function saveAll(){
-  IDS.forEach(id=>{const el=document.getElementById(id);if(el)localStorage.setItem('ba_'+id,el.value);});
-  const zones={};document.querySelectorAll('.body-zone').forEach(z=>zones[z.dataset.zone]=z.classList.contains('felt'));
-  localStorage.setItem('ba_zones',JSON.stringify(zones));
-  const blocks={};document.querySelectorAll('.block-item').forEach(b=>blocks[b.dataset.block]=b.classList.contains('checked'));
-  localStorage.setItem('ba_blocks',JSON.stringify(blocks));
+  IDS.forEach(id=>{ const el=document.getElementById(id); if(el) localStorage.setItem('ba_'+id,el.value); });
+  const zones={}; document.querySelectorAll('.body-zone').forEach(z=>zones[z.dataset.zone]=z.classList.contains('felt')); localStorage.setItem('ba_zones',JSON.stringify(zones));
+  const blocks={}; document.querySelectorAll('.block-item').forEach(b=>blocks[b.dataset.block]=b.classList.contains('checked')); localStorage.setItem('ba_blocks',JSON.stringify(blocks));
   localStorage.setItem('ba_picked',JSON.stringify(picked));
   localStorage.setItem('ba_burnDone',document.getElementById('burnBtn').disabled?'1':'0');
-  const st=document.getElementById('saveStatus');
-  st.textContent='✦ Saved';st.className='save-status saved';
-  clearTimeout(window._t);
-  window._t=setTimeout(()=>{st.textContent='✦ All responses saved locally';st.className='save-status saved';},2000);
+  const st=document.getElementById('saveStatus'); st.textContent='✦ Saved'; st.className='save-status saved';
+  clearTimeout(window._t); window._t=setTimeout(()=>{ st.textContent='✦ All responses saved locally'; st.className='save-status saved'; },2000);
 }
 function loadAll(){
-  IDS.forEach(id=>{const el=document.getElementById(id);if(el&&localStorage.getItem('ba_'+id))el.value=localStorage.getItem('ba_'+id);});
-  const zones=JSON.parse(localStorage.getItem('ba_zones')||'{}');
-  document.querySelectorAll('.body-zone').forEach(z=>{if(zones[z.dataset.zone])z.classList.add('felt');});
-  const blocks=JSON.parse(localStorage.getItem('ba_blocks')||'{}');
-  document.querySelectorAll('.block-item').forEach(b=>{if(blocks[b.dataset.block])b.classList.add('checked');});
+  IDS.forEach(id=>{ const el=document.getElementById(id); if(el&&localStorage.getItem('ba_'+id)) el.value=localStorage.getItem('ba_'+id); });
+  const zones=JSON.parse(localStorage.getItem('ba_zones')||'{}'); document.querySelectorAll('.body-zone').forEach(z=>{ if(zones[z.dataset.zone]) z.classList.add('felt'); });
+  const blocks=JSON.parse(localStorage.getItem('ba_blocks')||'{}'); document.querySelectorAll('.block-item').forEach(b=>{ if(blocks[b.dataset.block]) b.classList.add('checked'); });
   const sp=JSON.parse(localStorage.getItem('ba_picked')||'[]');
-  if(sp.length){
-    sp.forEach(txt=>{const a=document.querySelector(`.aff-item[data-aff="${txt}"]`);if(a){a.classList.add('picked');picked.push(txt);}});
-    document.getElementById('pickCount').textContent=picked.length;
-    if(picked.length===3)document.getElementById('pickDone').style.display='inline';
-    const card=document.getElementById('todayCard');
-    card.innerHTML='<div class="stars"></div><div style="position:relative;z-index:1;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.8">'+picked.map(t=>`✦ ${t}`).join('<br>')+'</div>';
-  }
-  if(localStorage.getItem('ba_burnDone')==='1'){document.getElementById('burnBtn').textContent='🔥 Released';document.getElementById('burnBtn').disabled=true;document.getElementById('burnMsg').style.display='block';}
-  ['vidUrl1','vidUrl2'].forEach((id,i)=>{
-    const saved=localStorage.getItem('ba_vid_'+id)||HARDCODED[id];
-    if(saved){document.getElementById(id).value=saved;loadVideo(id,'vidEmbed'+(i+1),'videoSlot'+(i+1));}
-  });
+  if(sp.length){ sp.forEach(txt=>{ const a=document.querySelector(`.aff-item[data-aff="${txt}"]`); if(a){ a.classList.add('picked'); picked.push(txt); } }); document.getElementById('pickCount').textContent=picked.length; if(picked.length===3) document.getElementById('pickDone').style.display='inline'; const card=document.getElementById('todayCard'); card.innerHTML='<div class="stars" style="opacity:0.15"></div><div style="position:relative;z-index:1;font-family:\'Cormorant Garamond\',serif;font-style:italic;font-size:16px;color:var(--txt);line-height:1.8">'+picked.map(t=>`✦ ${t}`).join('<br>')+'</div>'; }
+  if(localStorage.getItem('ba_burnDone')==='1'){ document.getElementById('burnBtn').textContent='🔥 Released'; document.getElementById('burnBtn').disabled=true; document.getElementById('burnMsg').style.display='block'; }
+  ['vidUrl1','vidUrl2'].forEach((id,i)=>{ const saved=localStorage.getItem('ba_vid_'+id)||HVIDS[id]; if(saved){ document.getElementById(id).value=saved; loadVideo(id,'vidEmbed'+(i+1),'videoSlot'+(i+1)); } });
 }
-IDS.forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',saveAll);});
+IDS.forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('input',saveAll); });
 loadAll();
 </script>
 </body>
